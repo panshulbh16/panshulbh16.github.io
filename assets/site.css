@@ -274,12 +274,16 @@ p { margin: 0 0 16px; color: var(--muted); }
 }
 .project a.shot {
   display: block;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
   background: #070b14;
 }
 .project img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
   object-position: top center;
 }
