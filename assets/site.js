@@ -2,23 +2,22 @@
   const root = document.documentElement;
   const toggle = document.getElementById("theme-toggle");
   const stored = localStorage.getItem("theme");
-  if (stored === "light" || stored === "dark") {
-    root.dataset.theme = stored;
-  } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-    root.dataset.theme = "light";
-  } else {
-    root.dataset.theme = "dark";
-  }
+  if (stored === "light" || stored === "dark") root.dataset.theme = stored;
+
+  const resolved = () =>
+    root.dataset.theme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
 
   const label = () => {
     if (!toggle) return;
-    toggle.textContent = root.dataset.theme === "light" ? "Use dark theme" : "Use light theme";
-    toggle.setAttribute("aria-pressed", root.dataset.theme === "light" ? "true" : "false");
+    const light = resolved() === "light";
+    toggle.textContent = light ? "Use dark theme" : "Use light theme";
+    toggle.setAttribute("aria-pressed", light ? "true" : "false");
   };
   label();
   toggle?.addEventListener("click", () => {
-    root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
-    localStorage.setItem("theme", root.dataset.theme);
+    const next = resolved() === "light" ? "dark" : "light";
+    root.dataset.theme = next;
+    localStorage.setItem("theme", next);
     label();
   });
 
