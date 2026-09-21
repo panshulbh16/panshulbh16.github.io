@@ -43,7 +43,10 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.25rem;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -143,15 +146,16 @@ h1 {
   background: currentColor;
   transition: width 0.25s ease;
 }
-.section-nav a:hover,
+.section-nav a:hover { color: var(--ink); }
 .section-nav a[aria-current="true"] {
-  color: var(--ink);
+  color: var(--accent);
 }
 .section-nav a[aria-current="true"]::before {
   width: 56px;
   background: var(--accent);
 }
 
+.identity-foot { margin-top: auto; }
 .socials {
   display: flex;
   flex-wrap: wrap;
@@ -186,7 +190,11 @@ section {
   scroll-margin-top: 28px;
   margin-bottom: 88px;
 }
-section:last-of-type { margin-bottom: 0; }
+section:last-of-type {
+  margin-bottom: 0;
+  min-height: calc(100vh - 5rem);
+  padding-bottom: 24vh;
+}
 
 .section-label {
   margin: 0 0 22px;
@@ -379,22 +387,39 @@ p { margin: 0 0 16px; color: var(--muted); }
 
 @media (max-width: 860px) {
   .page {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: min(720px, calc(100% - 32px));
   }
   .identity {
-    position: static;
-    min-height: 0;
-    padding: 28px 0 8px;
+    display: contents;
   }
+  .identity-copy { order: 0; padding-top: 28px; }
+  .identity-foot { order: 1; margin-top: 8px; }
   .section-nav {
+    order: 2;
+    position: sticky;
+    top: 0;
+    z-index: 8;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 18px;
-    margin: 24px 0 8px;
+    gap: 4px 4px;
+    margin: 16px -16px 0;
+    padding: 10px 16px;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .section-nav a {
+    padding: 8px 10px;
+    letter-spacing: 0.1em;
   }
   .section-nav a::before { display: none; }
-  .content { padding: 12px 0 64px; }
+  .section-nav a[aria-current="true"] {
+    box-shadow: inset 0 -2px 0 var(--accent);
+  }
+  .socials { margin-top: 20px; padding-top: 0; }
+  .content { order: 3; padding: 20px 0 64px; }
   .job { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
   section { margin-bottom: 56px; }
 }
