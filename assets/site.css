@@ -278,6 +278,7 @@ p { margin: 0 0 16px; color: var(--muted); }
 }
 .project img {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
