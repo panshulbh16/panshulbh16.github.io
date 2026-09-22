@@ -50,7 +50,7 @@
         <p class="section-label">About</p>
         <h2 id="about-title">About</h2>
         <p>I have nearly five years in software. Most of that time has been spent making systems that other people have to operate: clear interfaces, boring reliability, and copy that matches what the code actually does.</p>
-        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a> is live. <a href="https://roamly-trip-planner.pb116.chatgpt.site/" target="_blank" rel="noopener">Roamly</a> is early access. Both are full-stack TypeScript apps I designed and implemented.</p>
+        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a> is live, <a href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">Tailor</a> is new, and <a href="https://roamly-trip-planner.pb116.chatgpt.site/" target="_blank" rel="noopener">Roamly</a> is early access. All are full-stack TypeScript apps I designed and implemented.</p>
         <p>I like the intersection of product and platform: a score you can explain, a daily quota that cannot be bypassed in the client, a payment webhook that still grants access if the tab closes. That is the standard I hold my own shipping to.</p>
       </section>
 
@@ -116,6 +116,35 @@
             <div class="links">
               <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">opportunityhunter.xyz ↗</a>
               <a href="https://github.com/panshulbh16/opportunity-hunter" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="shot" href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">
+            <img src="./assets/img/tailor.png" alt="Tailor: Your résumé, matched to the job — résumé and job-description inputs beside a results panel" width="1600" height="1000" loading="lazy" decoding="async">
+          </a>
+          <div class="project-body">
+            <div class="meta">
+              <span class="badge">New</span>
+              <span>AI résumé tool · 2026</span>
+            </div>
+            <h3>Tailor</h3>
+            <p class="summary">Paste a résumé and a job description; Tailor returns an honest fit score, the gaps, and a résumé rewritten for that exact role — using only what's genuinely on it.</p>
+            <div data-tabs>
+              <div class="tabs" role="tablist" aria-label="Tailor case study">
+                <button type="button" role="tab" id="ta-problem" aria-controls="ta-problem-panel" aria-selected="true">Problem</button>
+                <button type="button" role="tab" id="ta-build" aria-controls="ta-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+                <button type="button" role="tab" id="ta-deep" aria-controls="ta-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+                <button type="button" role="tab" id="ta-stack" aria-controls="ta-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+              </div>
+              <p class="panel" role="tabpanel" id="ta-problem-panel" aria-labelledby="ta-problem">People send the same résumé to every posting and get filtered out because it doesn't speak the job's language. Tailoring by hand for each role is slow, and most tools happily invent experience — which backfires in interviews.</p>
+              <p class="panel" role="tabpanel" id="ta-build-panel" aria-labelledby="ta-build" hidden>A 0–100 fit score with a one-line verdict, the matched strengths, the missing or underplayed gaps, and a résumé rewritten to the role — constrained to facts already in the original. Accounts, a free-tier quota and a Razorpay Pro pass are built in.</p>
+              <p class="panel" role="tabpanel" id="ta-deep-panel" aria-labelledby="ta-deep" hidden>Built by reusing Opportunity Hunter's engine — auth, SQLite, billing, Anthropic setup — pointed at a sharper problem. Claude returns one delimited response (a small header plus the résumé); a streaming route forwards the text deltas and the client parses them as they arrive, so the score and gaps show in seconds while the résumé writes in live. Input is treated as data, never instructions.</p>
+              <p class="panel" role="tabpanel" id="ta-stack-panel" aria-labelledby="ta-stack" hidden>Next.js 15 App Router, TypeScript, a streaming route handler, Claude (Sonnet), better-sqlite3, hand-rolled sessions, Razorpay.</p>
+            </div>
+            <div class="links">
+              <a href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">Source ↗</a>
             </div>
           </div>
         </article>
