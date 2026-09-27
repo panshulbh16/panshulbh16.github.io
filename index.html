@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Panshul Bharadwaj — Developer</title>
-  <meta name="description" content="Developer and technology consultant in Bengaluru. I ship products end to end — Opportunity Hunter, a live job-matching agent, and Roamly, an early-access trip planner.">
+  <meta name="description" content="Developer and technology consultant in Bengaluru. I ship products end to end — Opportunity Hunter, a live job-matching agent, and Roamly, an AI trip planner.">
   <meta property="og:title" content="Panshul Bharadwaj — Developer">
   <meta property="og:description" content="Technology consultant at Deloitte. Builder of Opportunity Hunter and Roamly.">
   <meta property="og:type" content="website">
@@ -50,7 +50,7 @@
         <p class="section-label">About</p>
         <h2 id="about-title">About</h2>
         <p>I’m an experienced software developer with expertise in building products from idea to production. I build full-stack applications with intuitive interfaces, reliable backend systems, and practical features that solve real problems.</p>
-        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a> and <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Tailor</a> are live, and <a href="https://heyroamly.com/" target="_blank" rel="noopener">Roamly</a> is early access. All are full-stack TypeScript apps I designed and implemented.</p>
+        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a>, <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Tailor</a>, and <a href="https://heyroamly.com/" target="_blank" rel="noopener">Roamly</a> are live. All are full-stack TypeScript apps I designed and implemented.</p>
         <p>I like the intersection of product and platform: a score you can explain, a daily quota that cannot be bypassed in the client, a payment webhook that still grants access if the tab closes. That is the standard I hold my own shipping to.</p>
       </section>
 
@@ -156,11 +156,11 @@
           </a>
           <div class="project-body">
             <div class="meta">
-              <span class="badge access">Early access</span>
+              <span class="badge">Live</span>
               <span>Trip planner · 2026</span>
             </div>
             <h3>Roamly</h3>
-            <p class="summary">An early-access planner that turns destination, dates, budget, and pace into a day-by-day itinerary. It does not pretend to take payments or confirm hotel inventory.</p>
+            <p class="summary">An AI trip planner that turns destination, dates, budget, and pace into a day-by-day itinerary — then lets you publish the trip and invite people along. Stays link out to Airbnb; it never pretends to confirm hotel inventory.</p>
             <div data-tabs>
               <div class="tabs" role="tablist" aria-label="Roamly case study">
                 <button type="button" role="tab" id="ro-problem" aria-controls="ro-problem-panel" aria-selected="true">Problem</button>
@@ -169,9 +169,9 @@
                 <button type="button" role="tab" id="ro-stack" aria-controls="ro-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
               </div>
               <p class="panel" role="tabpanel" id="ro-problem-panel" aria-labelledby="ro-problem">Generic chat itineraries invent opening hours and prices. A planner people might trust has to bound the model, store history per owner, and send stays out to Airbnb instead of scraping listings.</p>
-              <p class="panel" role="tabpanel" id="ro-build-panel" aria-labelledby="ro-build" hidden>Streaming generation with Zod-validated days, trip DNA and packing cues, heuristic cost bands, owner-scoped D1 trips and search history, and a Plus waitlist that records interest only. AI is fail-closed without key, model, and monthly ceiling; failed attempts still consume quota so retries cannot burn spend.</p>
-              <p class="panel" role="tabpanel" id="ro-deep-panel" aria-labelledby="ro-deep" hidden>Roamly runs as a single Cloudflare Worker over D1. The hard constraint is cost, so generation is gated by an atomic per-user daily and global monthly budget written in one SQL statement — charged on attempt, so a retry loop cannot drain spend, and fail-closed when unconfigured. Claude’s output streams to the UI and is Zod-validated both in and out, and every query is owner-scoped so no trip is reachable by ID alone. Untrusted input is passed as data, never instructions.</p>
-              <p class="panel" role="tabpanel" id="ro-stack-panel" aria-labelledby="ro-stack" hidden>Next.js on vinext / Cloudflare Workers, D1 + Drizzle, Anthropic, optional Supabase Google and email OTP beside ChatGPT Sites identity, destination directory, and redirect-only Airbnb search.</p>
+              <p class="panel" role="tabpanel" id="ro-build-panel" aria-labelledby="ro-build" hidden>Streaming generation with Zod-validated days, trip DNA and packing cues, heuristic cost bands, and owner-scoped D1 trips and search history. Travel Together publishes a trip for others to request a seat, and email invites sign the guest in and add them in one click. Plus is a ₹499 30-day Razorpay pass, granted once whether the checkout or the webhook lands first. AI is fail-closed without key, model, and monthly ceiling; failed attempts still consume quota so retries cannot burn spend.</p>
+              <p class="panel" role="tabpanel" id="ro-deep-panel" aria-labelledby="ro-deep" hidden>Roamly runs as a single Cloudflare Worker over D1. The hard constraint is cost, so generation is gated by an atomic per-user daily and global monthly budget written in one SQL statement — charged on attempt, so a retry loop cannot drain spend, and fail-closed when unconfigured. Claude’s output streams to the UI and is Zod-validated both in and out, and every query is owner-scoped so no trip is reachable by ID alone. Invite links are single-use 256-bit tokens stored only as hashes, and accepting one is a POST so email scanners can’t spend it. Untrusted input is passed as data, never instructions.</p>
+              <p class="panel" role="tabpanel" id="ro-stack-panel" aria-labelledby="ro-stack" hidden>Next.js on vinext / Cloudflare Workers, D1 + Drizzle, Anthropic, Supabase Google and email OTP, Razorpay, Resend, GitHub Actions deploys, destination directory, and redirect-only Airbnb search.</p>
             </div>
             <div class="links">
               <a href="https://heyroamly.com/" target="_blank" rel="noopener">Open Roamly ↗</a>
