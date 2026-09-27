@@ -311,10 +311,6 @@ p { margin: 0 0 16px; color: var(--muted); }
   border-radius: 50%;
   background: var(--accent);
 }
-.badge.access::before { background: #e7c27a; }
-.badge.access { color: #e7c27a; }
-:root[data-theme="light"] .badge.access { color: #8a5a12; }
-:root[data-theme="light"] .badge.access::before { background: #8a5a12; }
 
 .project h3 {
   margin: 0;
