@@ -50,7 +50,7 @@
         <p class="section-label">About</p>
         <h2 id="about-title">About</h2>
         <p>I’m an experienced software developer with expertise in building products from idea to production. I build full-stack applications with intuitive interfaces, reliable backend systems, and practical features that solve real problems.</p>
-        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a>, <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Tailor</a>, and <a href="https://heyroamly.com/" target="_blank" rel="noopener">Roamly</a> are live. All are full-stack TypeScript apps I designed and implemented.</p>
+        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a>, <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Tailor</a>, <a href="https://heyroamly.com/" target="_blank" rel="noopener">Roamly</a>, and <a href="https://heyduely.com/" target="_blank" rel="noopener">Duely</a> are live. All are full-stack TypeScript apps I designed and implemented.</p>
         <p>I like the intersection of product and platform: a score you can explain, a daily quota that cannot be bypassed in the client, a payment webhook that still grants access if the tab closes. That is the standard I hold my own shipping to.</p>
       </section>
 
@@ -176,6 +176,35 @@
             <div class="links">
               <a href="https://heyroamly.com/" target="_blank" rel="noopener">Open Roamly ↗</a>
               <a href="https://github.com/panshulbh16/roamly" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="shot" href="https://heyduely.com/" target="_blank" rel="noopener">
+            <img src="./assets/img/duely.png" alt="Duely dashboard: ₹7,911 a month, upcoming renewals, and spend by category" width="1600" height="1000" loading="lazy" decoding="async">
+          </a>
+          <div class="project-body">
+            <div class="meta">
+              <span class="badge">Live</span>
+              <span>Subscription tracker · 2026</span>
+            </div>
+            <h3>Duely</h3>
+            <p class="summary">Every subscription in one place — AI apps, streaming, the gym, a VPN — with what you pay a month and a year, and an email and phone notification before each renewal or free trial turns into a charge.</p>
+            <div data-tabs>
+              <div class="tabs" role="tablist" aria-label="Duely case study">
+                <button type="button" role="tab" id="du-problem" aria-controls="du-problem-panel" aria-selected="true">Problem</button>
+                <button type="button" role="tab" id="du-build" aria-controls="du-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+                <button type="button" role="tab" id="du-deep" aria-controls="du-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+                <button type="button" role="tab" id="du-stack" aria-controls="du-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+              </div>
+              <p class="panel" role="tabpanel" id="du-problem-panel" aria-labelledby="du-problem">Subscriptions are scattered across cards, app stores and UPI autopay, and nobody remembers that a free trial becomes a charge on Thursday. Trackers usually die because typing every subscription in is a chore.</p>
+              <p class="panel" role="tabpanel" id="du-build-panel" aria-labelledby="du-build" hidden>A catalog of 108 services across 17 categories with each service’s own icon; billing-cycle maths that rolls dates forward (the 31st stays the 31st); spend by category and currency; an hourly reminder digest by email and Expo push. Receipt import: forward receipts to a private address — or set one Gmail filter — and each becomes a draft you confirm, matched to what you already track. Web app plus an iOS/Android app in Expo.</p>
+              <p class="panel" role="tabpanel" id="du-deep-panel" aria-labelledby="du-deep" hidden>One Cloudflare Worker serves the API, the React site and an email handler. Receipts arrive through Cloudflare Email Routing and are read by rules for well-known senders, then by Claude behind per-person and monthly budgets charged on attempt; nothing becomes a subscription without the owner’s confirmation, and Duely never connects to the inbox itself. Each charge is claimed in D1 before a reminder goes out, so overlapping cron runs can’t double-send, and a failed send releases the claim for the next hour. Payment methods, account emails, notes and receipt text are sealed with AES-256-GCM bound to their row. Service icons are fetched from each service’s own site, verified by their bytes, cached in D1 and served same-origin, so the browser never calls a third party.</p>
+              <p class="panel" role="tabpanel" id="du-stack-panel" aria-labelledby="du-stack" hidden>Cloudflare Workers (Hono), D1 + Drizzle, Email Routing, React 19 + Vite, Expo / React Native with expo-notifications, Resend, Claude, Zod, 139 Vitest tests in the Workers runtime, GitHub Actions deploys.</p>
+            </div>
+            <div class="links">
+              <a href="https://heyduely.com/" target="_blank" rel="noopener">heyduely.com ↗</a>
             </div>
           </div>
         </article>
