@@ -3,7 +3,7 @@
   --bg-elev: #121a2b;
   --ink: #e8eefc;
   --muted: #9aa8c7;
-  --faint: #6d7a99;
+  --faint: #75819e;
   --line: rgba(232, 238, 252, 0.1);
   --accent: #7dd3c7;
   --accent-ink: #04221e;
@@ -120,6 +120,38 @@ h1 {
   margin: 18px 0 0;
   max-width: 36ch;
   color: var(--faint);
+}
+
+/* Three facts a recruiter scans for, under the lede. */
+.proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 380px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.proof li {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 0 14px;
+  border-left: 1px solid var(--line);
+}
+.proof li:first-child { padding-left: 0; border-left: 0; }
+.proof strong {
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.proof span {
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
 }
 
 .section-nav {
@@ -423,6 +455,14 @@ p { margin: 0 0 16px; color: var(--muted); }
   .content { order: 3; padding: 20px 0 64px; }
   .job { grid-template-columns: 1fr; gap: 6px; padding: 16px 0; }
   section { margin-bottom: 56px; }
+  /* Keep the four case-study tabs on one line on phones. */
+  .tabs { gap: 0; }
+  .tabs button { padding: 8px 7px; letter-spacing: 0.04em; white-space: nowrap; }
+}
+
+/* Small phones: keep the four section links on one row. */
+@media (max-width: 380px) {
+  .section-nav a { padding: 8px 7px; letter-spacing: 0.06em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
