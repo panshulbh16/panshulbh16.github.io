@@ -21,6 +21,7 @@
   <meta name="twitter:description" content="Four live products, built end to end: Opportunity Hunter, Tailor, Roamly and Duely — job matching, résumés, trip planning and subscriptions.">
   <meta name="twitter:image" content="https://panshulbh16.github.io/assets/img/og.png">
   <meta name="twitter:image:alt" content="Panshul Bharadwaj, product engineer in Bengaluru, beside screenshots of Opportunity Hunter, Tailor, Roamly and Duely">
+  <meta name="theme-color" content="#0e1014">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,241 +35,313 @@
     "worksFor": { "@type": "Organization", "name": "Deloitte" }
   }
   </script>
+  <script>
+    try {
+      const t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch {}
+  </script>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="preload" href="./assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./assets/site.css">
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
-  <div class="page">
-    <header class="identity">
-      <div class="identity-copy">
-        <p class="eyebrow">Product engineer · Bengaluru</p>
-        <h1>Panshul Bharadwaj</h1>
-        <p class="role">I design, build, and ship software products.</p>
-        <p class="lede">By day I build on Oracle Fusion Cloud CRM at Deloitte. The rest of the time I take products from idea to production — matching, quotas, auth, billing, and the parts that have to stay honest.</p>
-        <ul class="proof" aria-label="At a glance">
-          <li><strong>4</strong> <span>live products</span></li>
-          <li><strong>4 yrs</strong> <span>Oracle Fusion CRM</span></li>
-          <li><strong>Web + app</strong> <span>iOS and Android</span></li>
-        </ul>
-      </div>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="wordmark" href="#top">Panshul Bharadwaj</a>
       <nav class="section-nav" aria-label="On this page">
-        <a href="#about" aria-current="true">About</a>
+        <a href="#work" aria-current="true">Work</a>
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="identity-foot">
-        <div class="socials">
-          <a href="https://github.com/panshulbh16" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/panshul-bharadwaj" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:bharadwajpanshul@gmail.com">Email</a>
-        </div>
-        <button class="theme-toggle" id="theme-toggle" type="button">Use light theme</button>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero wrap" id="top" aria-labelledby="name">
+      <h1 id="name">Panshul Bharadwaj</h1>
+      <p class="role">I design, build and ship software products.</p>
+      <p class="lede">By day I build on Oracle Fusion Cloud CRM at Deloitte. The rest of the time I take products from idea to production: matching, quotas, auth, billing, and the parts that have to stay honest.</p>
+      <p class="hero-actions">
+        <a class="button primary" href="mailto:bharadwajpanshul@gmail.com">Email me</a>
+        <a class="button" href="https://github.com/panshulbh16" target="_blank" rel="noopener">GitHub</a>
+        <a class="button" href="https://www.linkedin.com/in/panshul-bharadwaj" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+
+    <section class="work wrap" id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Work</h2>
+        <p>Four products I designed, built and run myself. All of them are live.</p>
       </div>
-    </header>
 
-    <main class="content" id="content">
-      <section id="about" aria-labelledby="about-title">
-        <p class="section-label">About</p>
-        <h2 id="about-title">About</h2>
-        <p>I’m a product engineer: I take an idea to something people use, then keep it working honestly in production. At work that means enterprise CRM on Oracle Fusion Cloud; on my own time it means full-stack products, from the database schema to the copy on the buttons.</p>
-        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Opportunity Hunter</a>, <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Tailor</a>, <a href="https://heyroamly.com/" target="_blank" rel="noopener">Roamly</a>, and <a href="https://heyduely.com/" target="_blank" rel="noopener">Duely</a> are live. All are full-stack TypeScript apps I designed and implemented.</p>
-        <p>I like the intersection of product and platform: a score you can explain, a daily quota that cannot be bypassed in the client, a payment webhook that still grants access if the tab closes. That is the standard I hold my own shipping to.</p>
-      </section>
-
-      <section id="experience" aria-labelledby="experience-title">
-        <p class="section-label">Experience</p>
-        <h2 id="experience-title">Experience</h2>
-        <div class="jobs">
-          <article class="job">
-            <p class="when">Present</p>
-            <div>
-              <h3>Technology Consultant <span>· Deloitte</span></h3>
-              <p>Four years building on Oracle Fusion Cloud CRM for client programmes: Redwood user experiences and Visual Builder (VBCS) applications, from design through delivery and handover. Client details stay confidential; the public proof of how I engineer is in the products below.</p>
-              <ul class="tags">
-                <li>Oracle Fusion CRM</li>
-                <li>Redwood</li>
-                <li>VBCS</li>
-                <li>Consulting</li>
-              </ul>
-            </div>
-          </article>
-          <article class="job">
-            <p class="when">2026 — now</p>
-            <div>
-              <h3>Independent product engineering</h3>
-              <p>Ship four public products from zero, each designed, built and run by me: a job-discovery agent with explainable scoring and Razorpay billing; a résumé tailor that streams its rewrite; a trip planner on Cloudflare with fail-closed AI budgets; and a subscription tracker with a web app, an iOS/Android app, receipt import and push reminders.</p>
-              <ul class="tags">
-                <li>TypeScript</li>
-                <li>Next.js</li>
-                <li>React Native</li>
-                <li>Cloudflare Workers + D1</li>
-                <li>Claude API</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" aria-labelledby="projects-title">
-        <p class="section-label">Projects</p>
-        <h2 id="projects-title">Projects</h2>
-
-        <article class="project">
-          <a class="shot" href="https://opportunityhunter.xyz" target="_blank" rel="noopener">
-            <picture>
-              <source type="image/webp" srcset="./assets/img/opportunity-hunter.webp">
-              <img src="./assets/img/opportunity-hunter.png" alt="Opportunity Hunter landing page: Stop Searching. Start Getting Matched, with a Software Engineer — Backend match card at 92" width="1600" height="1000" decoding="async" fetchpriority="high">
-            </picture>
-          </a>
-          <div class="project-body">
-            <div class="meta">
-              <span class="badge">Live</span>
-              <span>Job-matching agent · 2026</span>
-            </div>
-            <h3>Opportunity Hunter</h3>
-            <p class="summary">A job-hunting agent: you describe the role you want, it keeps searching licensed listings, scores each one 0–100 against your profile, and tracks saved → applied → offer.</p>
-            <div data-tabs>
-              <div class="tabs" role="tablist" aria-label="Opportunity Hunter case study">
-                <button type="button" role="tab" id="oh-problem" aria-controls="oh-problem-panel" aria-selected="true">Problem</button>
-                <button type="button" role="tab" id="oh-build" aria-controls="oh-build-panel" aria-selected="false" tabindex="-1">What I built</button>
-                <button type="button" role="tab" id="oh-deep" aria-controls="oh-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
-                <button type="button" role="tab" id="oh-stack" aria-controls="oh-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
-              </div>
-              <p class="panel" role="tabpanel" id="oh-problem-panel" aria-labelledby="oh-problem">Job boards dump undifferentiated lists. People re-search the same query every day, then lose track of what they already opened. The product needed a profile, a repeating hunt, an explainable score, and a tracker — not another scrape of LinkedIn.</p>
-              <p class="panel" role="tabpanel" id="oh-build-panel" aria-labelledby="oh-build" hidden>Source adapters (JSearch) feed a shared pool. A deterministic scorer weighs skills, role, experience, location, and salary, then writes a plain-English explanation — upgraded with a semantic layer so matching reads meaning, and a re-ranker that learns from what you save, apply to and reject. Server actions enforce a 15-match weekly free cap. Pro is a 30-day Razorpay pass with webhook recovery. SQLite on a persistent disk; hunts on a cron, not a serverless hope.</p>
-              <p class="panel" role="tabpanel" id="oh-deep-panel" aria-labelledby="oh-deep" hidden>Matching grew in layers. First, semantic matching: skills, roles and descriptions are embedded once via Voyage, cached in SQLite and compared by cosine similarity — the hot scoring loop stays synchronous and pure by warming the cache up front, not calling the network per job. On top of that, a preference re-ranker that <em>learns from behaviour</em>: it builds a “taste” vector from the embeddings of listings you saved or applied to, minus the ones you rejected, and nudges the ranking toward it — implicit-feedback learning-to-rank, with the base score kept deterministic and explainable. All of it degrades cleanly to exact-text matching with no API key, and cross-domain guards keep a doctor’s profile off developer roles.</p>
-              <p class="panel" role="tabpanel" id="oh-stack-panel" aria-labelledby="oh-stack" hidden>Next.js 15 App Router, TypeScript, Tailwind, better-sqlite3, hand-rolled sessions, optional Google OAuth, Resend/SMTP, Razorpay, RapidAPI JSearch, Voyage embeddings. Matching is deterministic and testable with an optional semantic layer; Claude drafts a profile from an imported résumé.</p>
-            </div>
-            <div class="links">
-              <a href="https://opportunityhunter.xyz" target="_blank" rel="noopener">opportunityhunter.xyz ↗</a>
-              <a href="https://github.com/panshulbh16/opportunity-hunter" target="_blank" rel="noopener">Source ↗</a>
-            </div>
+      <div class="bento">
+        <article class="card span-7" style="--hue: var(--duely)" aria-labelledby="duely-title">
+          <div class="card-copy">
+            <p class="kind">Subscription tracker, web + iOS + Android</p>
+            <h3 id="duely-title">Duely</h3>
+            <p>Every subscription in one place, with what you pay a month and a year, and a reminder before each renewal or free trial turns into a charge.</p>
+            <p class="card-actions">
+              <button class="button small" type="button" data-study="study-duely" aria-haspopup="dialog">Case study</button>
+              <a class="visit" href="https://heyduely.com/" target="_blank" rel="noopener">heyduely.com</a>
+            </p>
           </div>
-        </article>
-
-        <article class="project">
-          <a class="shot" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">
-            <picture>
-              <source type="image/webp" srcset="./assets/img/tailor.webp">
-              <img src="./assets/img/tailor.png" alt="Tailor: Your résumé, matched to the job — résumé and job-description inputs beside a results panel" width="1600" height="1000" loading="lazy" decoding="async">
-            </picture>
-          </a>
-          <div class="project-body">
-            <div class="meta">
-              <span class="badge">Live</span>
-              <span>AI résumé tool · 2026</span>
-            </div>
-            <h3>Tailor</h3>
-            <p class="summary">Paste a résumé and a job description; Tailor returns an honest fit score, the gaps, and a résumé rewritten for that exact role — using only what's genuinely on it.</p>
-            <div data-tabs>
-              <div class="tabs" role="tablist" aria-label="Tailor case study">
-                <button type="button" role="tab" id="ta-problem" aria-controls="ta-problem-panel" aria-selected="true">Problem</button>
-                <button type="button" role="tab" id="ta-build" aria-controls="ta-build-panel" aria-selected="false" tabindex="-1">What I built</button>
-                <button type="button" role="tab" id="ta-deep" aria-controls="ta-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
-                <button type="button" role="tab" id="ta-stack" aria-controls="ta-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
-              </div>
-              <p class="panel" role="tabpanel" id="ta-problem-panel" aria-labelledby="ta-problem">People send the same résumé to every posting and get filtered out because it doesn't speak the job's language. Tailoring by hand for each role is slow, and most tools happily invent experience — which backfires in interviews.</p>
-              <p class="panel" role="tabpanel" id="ta-build-panel" aria-labelledby="ta-build" hidden>A 0–100 fit score with a one-line verdict, the matched strengths, the missing or underplayed gaps, and a résumé rewritten to the role — constrained to facts already in the original. Accounts, a free-tier quota and a Razorpay Pro pass are built in.</p>
-              <p class="panel" role="tabpanel" id="ta-deep-panel" aria-labelledby="ta-deep" hidden>Built by reusing Opportunity Hunter's engine — auth, SQLite, billing, Anthropic setup — pointed at a sharper problem. Claude returns one delimited response (a small header plus the résumé); a streaming route forwards the text deltas and the client parses them as they arrive, so the score and gaps show in seconds while the résumé writes in live. Input is treated as data, never instructions.</p>
-              <p class="panel" role="tabpanel" id="ta-stack-panel" aria-labelledby="ta-stack" hidden>Next.js 15 App Router, TypeScript, a streaming route handler, Claude (Sonnet), better-sqlite3, hand-rolled sessions, Razorpay.</p>
-            </div>
-            <div class="links">
-              <a href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Open Tailor ↗</a>
-              <a href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">Source ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="shot" href="https://heyroamly.com/" target="_blank" rel="noopener">
-            <picture>
-              <source type="image/webp" srcset="./assets/img/roamly.webp">
-              <img src="./assets/img/roamly.png" alt="Roamly planner: Where to next, trip form, and Dolomites hero" width="1600" height="1000" loading="lazy" decoding="async">
-            </picture>
-          </a>
-          <div class="project-body">
-            <div class="meta">
-              <span class="badge">Live</span>
-              <span>Trip planner · 2026</span>
-            </div>
-            <h3>Roamly</h3>
-            <p class="summary">An AI trip planner that turns destination, dates, budget, and pace into a day-by-day itinerary — then lets you publish the trip and invite people along. Stays link out to Airbnb; it never pretends to confirm hotel inventory.</p>
-            <div data-tabs>
-              <div class="tabs" role="tablist" aria-label="Roamly case study">
-                <button type="button" role="tab" id="ro-problem" aria-controls="ro-problem-panel" aria-selected="true">Problem</button>
-                <button type="button" role="tab" id="ro-build" aria-controls="ro-build-panel" aria-selected="false" tabindex="-1">What I built</button>
-                <button type="button" role="tab" id="ro-deep" aria-controls="ro-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
-                <button type="button" role="tab" id="ro-stack" aria-controls="ro-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
-              </div>
-              <p class="panel" role="tabpanel" id="ro-problem-panel" aria-labelledby="ro-problem">Generic chat itineraries invent opening hours and prices. A planner people might trust has to bound the model, store history per owner, and send stays out to Airbnb instead of scraping listings.</p>
-              <p class="panel" role="tabpanel" id="ro-build-panel" aria-labelledby="ro-build" hidden>Streaming generation with Zod-validated days, trip DNA and packing cues, heuristic cost bands, and owner-scoped D1 trips and search history. Travel Together publishes a trip for others to request a seat, and email invites sign the guest in and add them in one click. Plus is a ₹499 30-day Razorpay pass, granted once whether the checkout or the webhook lands first. AI is fail-closed without key, model, and monthly ceiling; failed attempts still consume quota so retries cannot burn spend.</p>
-              <p class="panel" role="tabpanel" id="ro-deep-panel" aria-labelledby="ro-deep" hidden>Roamly runs as a single Cloudflare Worker over D1. The hard constraint is cost, so generation is gated by an atomic per-user daily and global monthly budget written in one SQL statement — charged on attempt, so a retry loop cannot drain spend, and fail-closed when unconfigured. Claude’s output streams to the UI and is Zod-validated both in and out, and every query is owner-scoped so no trip is reachable by ID alone. Invite links are single-use 256-bit tokens stored only as hashes, and accepting one is a POST so email scanners can’t spend it. Untrusted input is passed as data, never instructions.</p>
-              <p class="panel" role="tabpanel" id="ro-stack-panel" aria-labelledby="ro-stack" hidden>Next.js on vinext / Cloudflare Workers, D1 + Drizzle, Anthropic, Supabase Google and email OTP, Razorpay, Resend, GitHub Actions deploys, destination directory, and redirect-only Airbnb search.</p>
-            </div>
-            <div class="links">
-              <a href="https://heyroamly.com/" target="_blank" rel="noopener">Open Roamly ↗</a>
-              <a href="https://github.com/panshulbh16/roamly" target="_blank" rel="noopener">Source ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="shot" href="https://heyduely.com/" target="_blank" rel="noopener">
+          <a class="window" href="https://heyduely.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="window-bar">heyduely.com</span>
             <picture>
               <source type="image/webp" srcset="./assets/img/duely.webp">
-              <img src="./assets/img/duely.png" alt="Duely dashboard: ₹7,911 a month, upcoming renewals, and spend by category" width="1600" height="1000" loading="lazy" decoding="async">
+              <img src="./assets/img/duely.png" alt="" width="1600" height="1000" decoding="async" fetchpriority="high">
             </picture>
           </a>
-          <div class="project-body">
-            <div class="meta">
-              <span class="badge">Live</span>
-              <span>Subscription tracker · 2026</span>
-            </div>
-            <h3>Duely</h3>
-            <p class="summary">Every subscription in one place — AI apps, streaming, the gym, a VPN — with what you pay a month and a year, and an email and phone notification before each renewal or free trial turns into a charge.</p>
-            <div data-tabs>
-              <div class="tabs" role="tablist" aria-label="Duely case study">
-                <button type="button" role="tab" id="du-problem" aria-controls="du-problem-panel" aria-selected="true">Problem</button>
-                <button type="button" role="tab" id="du-build" aria-controls="du-build-panel" aria-selected="false" tabindex="-1">What I built</button>
-                <button type="button" role="tab" id="du-deep" aria-controls="du-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
-                <button type="button" role="tab" id="du-stack" aria-controls="du-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
-              </div>
-              <p class="panel" role="tabpanel" id="du-problem-panel" aria-labelledby="du-problem">Subscriptions are scattered across cards, app stores and UPI autopay, and nobody remembers that a free trial becomes a charge on Thursday. Trackers usually die because typing every subscription in is a chore.</p>
-              <p class="panel" role="tabpanel" id="du-build-panel" aria-labelledby="du-build" hidden>A catalog of 108 services across 17 categories with each service’s own icon; billing-cycle maths that rolls dates forward (the 31st stays the 31st); spend by category and currency; an hourly reminder digest by email and Expo push. Subscriptions come in as drafts you confirm, matched to what you already track: forward a receipt, connect Gmail read-only, or, in the app, screenshot the App Store or Google Play subscriptions list. Web app plus an iOS/Android app in Expo.</p>
-              <p class="panel" role="tabpanel" id="du-deep-panel" aria-labelledby="du-deep" hidden>One Cloudflare Worker serves the API, the React site and an email handler. Receipts arrive through Cloudflare Email Routing or, only for people who connect Gmail, from an hourly read-only search (gmail.readonly) that opens just the matching messages. Rules for well-known senders, built from real inboxes, tell App Store renewals, expiry notices (read as cancelled) and one-off in-app purchases apart; Claude reads the rest behind per-person and monthly budgets charged on attempt, and a draft can be read again once the rules improve. Each charge is claimed in D1 before a reminder goes out, so overlapping cron runs can’t double-send, and a failed send releases the claim for the next hour. Payment methods, notes, receipt text and the Gmail token are sealed with AES-256-GCM bound to their row; disconnecting Gmail, or deleting the account (in the app too), revokes the token at Google. Icons are fetched from each service’s own site, verified by their bytes and served same-origin, so the browser never calls a third party.</p>
-              <p class="panel" role="tabpanel" id="du-stack-panel" aria-labelledby="du-stack" hidden>Cloudflare Workers (Hono), D1 + Drizzle, Email Routing, Gmail API (read-only OAuth), React 19 + Vite, Expo / React Native with expo-notifications, Resend, Claude, Zod, 180 Vitest tests (162 in the Workers runtime), GitHub Actions deploys.</p>
-            </div>
-            <div class="links">
-              <a href="https://heyduely.com/" target="_blank" rel="noopener">heyduely.com ↗</a>
-            </div>
-          </div>
         </article>
-      </section>
 
-      <section id="contact" aria-labelledby="contact-title">
-        <p class="section-label">Contact</p>
-        <h2 id="contact-title">Contact</h2>
-        <p class="contact-copy">For consulting conversations, collaborations, or a closer look at any of the four products, email is the fastest. LinkedIn if you prefer a thread.</p>
-        <ul class="contact-list">
-          <li>
-            <a href="mailto:bharadwajpanshul@gmail.com">bharadwajpanshul@gmail.com <span>Email</span></a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/panshul-bharadwaj" target="_blank" rel="noopener">linkedin.com/in/panshul-bharadwaj <span>Connect</span></a>
-          </li>
-          <li>
-            <a href="https://github.com/panshulbh16" target="_blank" rel="noopener">github.com/panshulbh16 <span>Code</span></a>
-          </li>
-        </ul>
-        <p class="site-footer">© Panshul Bharadwaj</p>
-      </section>
-    </main>
-  </div>
+        <article class="card span-5" style="--hue: var(--roamly)" aria-labelledby="roamly-title">
+          <div class="card-copy">
+            <p class="kind">AI trip planner</p>
+            <h3 id="roamly-title">Roamly</h3>
+            <p>Turns a destination, dates, budget and pace into a day-by-day itinerary, then lets you publish the trip and invite people along.</p>
+            <p class="card-actions">
+              <button class="button small" type="button" data-study="study-roamly" aria-haspopup="dialog">Case study</button>
+              <a class="visit" href="https://heyroamly.com/" target="_blank" rel="noopener">heyroamly.com</a>
+            </p>
+          </div>
+          <a class="window" href="https://heyroamly.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="window-bar">heyroamly.com</span>
+            <picture>
+              <source type="image/webp" srcset="./assets/img/roamly.webp">
+              <img src="./assets/img/roamly.png" alt="" width="1600" height="1000" decoding="async">
+            </picture>
+          </a>
+        </article>
+
+        <article class="card span-5" style="--hue: var(--tailor)" aria-labelledby="tailor-title">
+          <div class="card-copy">
+            <p class="kind">AI résumé tool</p>
+            <h3 id="tailor-title">Tailor</h3>
+            <p>Paste a résumé and a job description. Tailor returns an honest fit score, the gaps, and a résumé rewritten for that role, using only what's on it.</p>
+            <p class="card-actions">
+              <button class="button small" type="button" data-study="study-tailor" aria-haspopup="dialog">Case study</button>
+              <a class="visit" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Open Tailor</a>
+            </p>
+          </div>
+          <a class="window" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="window-bar">tailor.up.railway.app</span>
+            <picture>
+              <source type="image/webp" srcset="./assets/img/tailor.webp">
+              <img src="./assets/img/tailor.png" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </a>
+        </article>
+
+        <article class="card span-7" style="--hue: var(--hunter)" aria-labelledby="hunter-title">
+          <div class="card-copy">
+            <p class="kind">Job-matching agent</p>
+            <h3 id="hunter-title">Opportunity Hunter</h3>
+            <p>Describe the role you want. It keeps searching licensed listings, scores each one 0–100 against your profile with a reason, and tracks what you apply to.</p>
+            <p class="card-actions">
+              <button class="button small" type="button" data-study="study-hunter" aria-haspopup="dialog">Case study</button>
+              <a class="visit" href="https://opportunityhunter.xyz" target="_blank" rel="noopener">opportunityhunter.xyz</a>
+            </p>
+          </div>
+          <a class="window" href="https://opportunityhunter.xyz" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="window-bar">opportunityhunter.xyz</span>
+            <picture>
+              <source type="image/webp" srcset="./assets/img/opportunity-hunter.webp">
+              <img src="./assets/img/opportunity-hunter.png" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap split" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="prose">
+        <p>I’m a product engineer: I take an idea to something people use, then keep it working honestly in production. At work that means enterprise CRM on Oracle Fusion Cloud; on my own time it means full-stack products, from the database schema to the copy on the buttons.</p>
+        <p>The work I publish under my own name is product engineering, not a gallery of unfinished experiments. All four products above are live, full-stack TypeScript apps I designed and implemented.</p>
+        <p>I like the intersection of product and platform: a score you can explain, a daily quota that cannot be bypassed in the client, a payment webhook that still grants access if the tab closes. That is the standard I hold my own shipping to.</p>
+      </div>
+    </section>
+
+    <section class="wrap split" id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <div class="jobs">
+        <article class="job">
+          <p class="when">Present</p>
+          <h3>Technology Consultant, Deloitte</h3>
+          <p>Four years building on Oracle Fusion Cloud CRM for client programmes: Redwood user experiences and Visual Builder (VBCS) applications, from design through delivery and handover. Client details stay confidential; the public proof of how I engineer is in the products above.</p>
+          <ul class="pills" aria-label="Technologies">
+            <li>Oracle Fusion CRM</li>
+            <li>Redwood</li>
+            <li>VBCS</li>
+            <li>Consulting</li>
+          </ul>
+        </article>
+        <article class="job">
+          <p class="when">2026 to now</p>
+          <h3>Independent product engineering</h3>
+          <p>Four public products shipped from zero, each designed, built and run by me: a job-discovery agent with explainable scoring and Razorpay billing; a résumé tailor that streams its rewrite; a trip planner on Cloudflare with fail-closed AI budgets; and a subscription tracker with a web app, an iOS/Android app, receipt import and push reminders.</p>
+          <ul class="pills" aria-label="Technologies">
+            <li>TypeScript</li>
+            <li>Next.js</li>
+            <li>React Native</li>
+            <li>Cloudflare Workers + D1</li>
+            <li>Claude API</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="contact-copy">For consulting conversations, collaborations, or a closer look at any of the four products, email is the fastest. LinkedIn if you prefer a thread.</p>
+      <a class="big-email" href="mailto:bharadwajpanshul@gmail.com">bharadwajpanshul@gmail.com</a>
+      <p class="contact-links">
+        <a href="https://www.linkedin.com/in/panshul-bharadwaj" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/panshulbh16" target="_blank" rel="noopener">GitHub</a>
+      </p>
+      <p class="site-footer">© Panshul Bharadwaj</p>
+    </section>
+  </main>
+
+  <!-- Case studies: one panel per product, opened from its card. -->
+  <dialog class="study" id="study-duely" aria-labelledby="study-duely-title" style="--hue: var(--duely)">
+    <div class="study-inner">
+      <header class="study-head">
+        <div>
+          <p class="kind">Subscription tracker, web + iOS + Android</p>
+          <h2 id="study-duely-title">Duely</h2>
+        </div>
+        <button class="close" type="button" data-close aria-label="Close case study">Close</button>
+      </header>
+      <p class="study-summary">Every subscription in one place — AI apps, streaming, the gym, a VPN — with what you pay a month and a year, and an email and phone notification before each renewal or free trial turns into a charge.</p>
+      <div data-tabs>
+        <div class="tabs" role="tablist" aria-label="Duely case study">
+          <button type="button" role="tab" id="du-problem" aria-controls="du-problem-panel" aria-selected="true">Problem</button>
+          <button type="button" role="tab" id="du-build" aria-controls="du-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+          <button type="button" role="tab" id="du-deep" aria-controls="du-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+          <button type="button" role="tab" id="du-stack" aria-controls="du-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+        </div>
+        <p class="panel" role="tabpanel" id="du-problem-panel" aria-labelledby="du-problem">Subscriptions are scattered across cards, app stores and UPI autopay, and nobody remembers that a free trial becomes a charge on Thursday. Trackers usually die because typing every subscription in is a chore.</p>
+        <p class="panel" role="tabpanel" id="du-build-panel" aria-labelledby="du-build" hidden>A catalog of 108 services across 17 categories with each service’s own icon; billing-cycle maths that rolls dates forward (the 31st stays the 31st); spend by category and currency; an hourly reminder digest by email and Expo push. Subscriptions come in as drafts you confirm, matched to what you already track: forward a receipt, connect Gmail read-only, or, in the app, screenshot the App Store or Google Play subscriptions list. Web app plus an iOS/Android app in Expo.</p>
+        <p class="panel" role="tabpanel" id="du-deep-panel" aria-labelledby="du-deep" hidden>One Cloudflare Worker serves the API, the React site and an email handler. Receipts arrive through Cloudflare Email Routing or, only for people who connect Gmail, from an hourly read-only search (gmail.readonly) that opens just the matching messages. Rules for well-known senders, built from real inboxes, tell App Store renewals, expiry notices (read as cancelled) and one-off in-app purchases apart; Claude reads the rest behind per-person and monthly budgets charged on attempt, and a draft can be read again once the rules improve. Each charge is claimed in D1 before a reminder goes out, so overlapping cron runs can’t double-send, and a failed send releases the claim for the next hour. Push notifications go only to phones whose sign-in is still active. Payment methods, notes, receipt text and the Gmail token are sealed with AES-256-GCM bound to their row; disconnecting Gmail, or deleting the account (in the app too), revokes the token at Google. Icons are fetched from each service’s own site, verified by their bytes and served same-origin, so the browser never calls a third party.</p>
+        <p class="panel" role="tabpanel" id="du-stack-panel" aria-labelledby="du-stack" hidden>Cloudflare Workers (Hono), D1 + Drizzle, Email Routing, Gmail API (read-only OAuth), React 19 + Vite, Expo / React Native with expo-notifications, Resend, Claude, Zod, 858 Vitest tests across the API (in the Workers runtime), shared logic and the phone app, GitHub Actions deploys.</p>
+      </div>
+      <details class="built">
+        <summary>How it's built</summary>
+        <figure class="schematic" data-schematic="duely" aria-label="How Duely is built"></figure>
+      </details>
+      <p class="study-links"><a class="button primary" href="https://heyduely.com/" target="_blank" rel="noopener">Open heyduely.com</a></p>
+    </div>
+  </dialog>
+
+  <dialog class="study" id="study-roamly" aria-labelledby="study-roamly-title" style="--hue: var(--roamly)">
+    <div class="study-inner">
+      <header class="study-head">
+        <div>
+          <p class="kind">AI trip planner</p>
+          <h2 id="study-roamly-title">Roamly</h2>
+        </div>
+        <button class="close" type="button" data-close aria-label="Close case study">Close</button>
+      </header>
+      <p class="study-summary">An AI trip planner that turns destination, dates, budget, and pace into a day-by-day itinerary — then lets you publish the trip and invite people along. Stays link out to Airbnb; it never pretends to confirm hotel inventory.</p>
+      <div data-tabs>
+        <div class="tabs" role="tablist" aria-label="Roamly case study">
+          <button type="button" role="tab" id="ro-problem" aria-controls="ro-problem-panel" aria-selected="true">Problem</button>
+          <button type="button" role="tab" id="ro-build" aria-controls="ro-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+          <button type="button" role="tab" id="ro-deep" aria-controls="ro-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+          <button type="button" role="tab" id="ro-stack" aria-controls="ro-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+        </div>
+        <p class="panel" role="tabpanel" id="ro-problem-panel" aria-labelledby="ro-problem">Generic chat itineraries invent opening hours and prices. A planner people might trust has to bound the model, store history per owner, and send stays out to Airbnb instead of scraping listings.</p>
+        <p class="panel" role="tabpanel" id="ro-build-panel" aria-labelledby="ro-build" hidden>Streaming generation with Zod-validated days, trip DNA and packing cues, heuristic cost bands, and owner-scoped D1 trips and search history. Travel Together publishes a trip for others to request a seat, and email invites sign the guest in and add them in one click. Plus is a ₹499 30-day Razorpay pass, granted once whether the checkout or the webhook lands first. AI is fail-closed without key, model, and monthly ceiling; failed attempts still consume quota so retries cannot burn spend.</p>
+        <p class="panel" role="tabpanel" id="ro-deep-panel" aria-labelledby="ro-deep" hidden>Roamly runs as a single Cloudflare Worker over D1. The hard constraint is cost, so generation is gated by an atomic per-user daily and global monthly budget written in one SQL statement — charged on attempt, so a retry loop cannot drain spend, and fail-closed when unconfigured. Claude’s output streams to the UI and is Zod-validated both in and out, and every query is owner-scoped so no trip is reachable by ID alone. Invite links are single-use 256-bit tokens stored only as hashes, and accepting one is a POST so email scanners can’t spend it. Untrusted input is passed as data, never instructions.</p>
+        <p class="panel" role="tabpanel" id="ro-stack-panel" aria-labelledby="ro-stack" hidden>Next.js on vinext / Cloudflare Workers, D1 + Drizzle, Anthropic, Supabase Google and email OTP, Razorpay, Resend, GitHub Actions deploys, destination directory, and redirect-only Airbnb search.</p>
+      </div>
+      <details class="built">
+        <summary>How it's built</summary>
+        <figure class="schematic" data-schematic="roamly" aria-label="How Roamly is built"></figure>
+      </details>
+      <p class="study-links">
+        <a class="button primary" href="https://heyroamly.com/" target="_blank" rel="noopener">Open Roamly</a>
+        <a class="button" href="https://github.com/panshulbh16/roamly" target="_blank" rel="noopener">Source</a>
+      </p>
+    </div>
+  </dialog>
+
+  <dialog class="study" id="study-tailor" aria-labelledby="study-tailor-title" style="--hue: var(--tailor)">
+    <div class="study-inner">
+      <header class="study-head">
+        <div>
+          <p class="kind">AI résumé tool</p>
+          <h2 id="study-tailor-title">Tailor</h2>
+        </div>
+        <button class="close" type="button" data-close aria-label="Close case study">Close</button>
+      </header>
+      <p class="study-summary">Paste a résumé and a job description; Tailor returns an honest fit score, the gaps, and a résumé rewritten for that exact role — using only what's genuinely on it.</p>
+      <div data-tabs>
+        <div class="tabs" role="tablist" aria-label="Tailor case study">
+          <button type="button" role="tab" id="ta-problem" aria-controls="ta-problem-panel" aria-selected="true">Problem</button>
+          <button type="button" role="tab" id="ta-build" aria-controls="ta-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+          <button type="button" role="tab" id="ta-deep" aria-controls="ta-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+          <button type="button" role="tab" id="ta-stack" aria-controls="ta-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+        </div>
+        <p class="panel" role="tabpanel" id="ta-problem-panel" aria-labelledby="ta-problem">People send the same résumé to every posting and get filtered out because it doesn't speak the job's language. Tailoring by hand for each role is slow, and most tools happily invent experience — which backfires in interviews.</p>
+        <p class="panel" role="tabpanel" id="ta-build-panel" aria-labelledby="ta-build" hidden>A 0–100 fit score with a one-line verdict, the matched strengths, the missing or underplayed gaps, and a résumé rewritten to the role — constrained to facts already in the original. Accounts, a free-tier quota and a Razorpay Pro pass are built in.</p>
+        <p class="panel" role="tabpanel" id="ta-deep-panel" aria-labelledby="ta-deep" hidden>Built by reusing Opportunity Hunter's engine — auth, SQLite, billing, Anthropic setup — pointed at a sharper problem. Claude returns one delimited response (a small header plus the résumé); a streaming route forwards the text deltas and the client parses them as they arrive, so the score and gaps show in seconds while the résumé writes in live. Input is treated as data, never instructions.</p>
+        <p class="panel" role="tabpanel" id="ta-stack-panel" aria-labelledby="ta-stack" hidden>Next.js 15 App Router, TypeScript, a streaming route handler, Claude (Sonnet), better-sqlite3, hand-rolled sessions, Razorpay.</p>
+      </div>
+      <details class="built">
+        <summary>How it's built</summary>
+        <figure class="schematic" data-schematic="tailor" aria-label="How Tailor is built"></figure>
+      </details>
+      <p class="study-links">
+        <a class="button primary" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Open Tailor</a>
+        <a class="button" href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">Source</a>
+      </p>
+    </div>
+  </dialog>
+
+  <dialog class="study" id="study-hunter" aria-labelledby="study-hunter-title" style="--hue: var(--hunter)">
+    <div class="study-inner">
+      <header class="study-head">
+        <div>
+          <p class="kind">Job-matching agent</p>
+          <h2 id="study-hunter-title">Opportunity Hunter</h2>
+        </div>
+        <button class="close" type="button" data-close aria-label="Close case study">Close</button>
+      </header>
+      <p class="study-summary">A job-hunting agent: you describe the role you want, it keeps searching licensed listings, scores each one 0–100 against your profile, and tracks saved, applied and offer.</p>
+      <div data-tabs>
+        <div class="tabs" role="tablist" aria-label="Opportunity Hunter case study">
+          <button type="button" role="tab" id="oh-problem" aria-controls="oh-problem-panel" aria-selected="true">Problem</button>
+          <button type="button" role="tab" id="oh-build" aria-controls="oh-build-panel" aria-selected="false" tabindex="-1">What I built</button>
+          <button type="button" role="tab" id="oh-deep" aria-controls="oh-deep-panel" aria-selected="false" tabindex="-1">Deep dive</button>
+          <button type="button" role="tab" id="oh-stack" aria-controls="oh-stack-panel" aria-selected="false" tabindex="-1">Stack</button>
+        </div>
+        <p class="panel" role="tabpanel" id="oh-problem-panel" aria-labelledby="oh-problem">Job boards dump undifferentiated lists. People re-search the same query every day, then lose track of what they already opened. The product needed a profile, a repeating hunt, an explainable score, and a tracker — not another scrape of LinkedIn.</p>
+        <p class="panel" role="tabpanel" id="oh-build-panel" aria-labelledby="oh-build" hidden>Source adapters (JSearch) feed a shared pool. A deterministic scorer weighs skills, role, experience, location, and salary, then writes a plain-English explanation — upgraded with a semantic layer so matching reads meaning, and a re-ranker that learns from what you save, apply to and reject. Server actions enforce a 15-match weekly free cap. Pro is a 30-day Razorpay pass with webhook recovery. SQLite on a persistent disk; hunts on a cron, not a serverless hope.</p>
+        <p class="panel" role="tabpanel" id="oh-deep-panel" aria-labelledby="oh-deep" hidden>Matching grew in layers. First, semantic matching: skills, roles and descriptions are embedded once via Voyage, cached in SQLite and compared by cosine similarity — the hot scoring loop stays synchronous and pure by warming the cache up front, not calling the network per job. On top of that, a preference re-ranker that <em>learns from behaviour</em>: it builds a “taste” vector from the embeddings of listings you saved or applied to, minus the ones you rejected, and nudges the ranking toward it — implicit-feedback learning-to-rank, with the base score kept deterministic and explainable. All of it degrades cleanly to exact-text matching with no API key, and cross-domain guards keep a doctor’s profile off developer roles.</p>
+        <p class="panel" role="tabpanel" id="oh-stack-panel" aria-labelledby="oh-stack" hidden>Next.js 15 App Router, TypeScript, Tailwind, better-sqlite3, hand-rolled sessions, optional Google OAuth, Resend/SMTP, Razorpay, RapidAPI JSearch, Voyage embeddings. Matching is deterministic and testable with an optional semantic layer; Claude drafts a profile from an imported résumé.</p>
+      </div>
+      <details class="built">
+        <summary>How it's built</summary>
+        <figure class="schematic" data-schematic="opportunity-hunter" aria-label="How Opportunity Hunter is built"></figure>
+      </details>
+      <p class="study-links">
+        <a class="button primary" href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Open opportunityhunter.xyz</a>
+        <a class="button" href="https://github.com/panshulbh16/opportunity-hunter" target="_blank" rel="noopener">Source</a>
+      </p>
+    </div>
+  </dialog>
+
   <script type="module" src="./assets/site.js"></script>
 </body>
 </html>
