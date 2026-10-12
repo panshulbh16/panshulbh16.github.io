@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Panshul Bharadwaj — Product engineer</title>
   <meta name="description" content="Product engineer in Bengaluru. Four live products built end to end: Opportunity Hunter (jobs), Tailor (résumés), Roamly (trips) and Duely (subscriptions).">
+  <meta name="author" content="Panshul Bharadwaj">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://panshulbh16.github.io/">
   <meta property="og:site_name" content="Panshul Bharadwaj">
   <meta property="og:title" content="Panshul Bharadwaj — Product engineer">
@@ -25,14 +27,132 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Panshul Bharadwaj",
-    "url": "https://panshulbh16.github.io/",
-    "sameAs": [
-      "https://github.com/panshulbh16",
-      "https://www.linkedin.com/in/panshul-bharadwaj"
-    ],
-    "worksFor": { "@type": "Organization", "name": "Deloitte" }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://panshulbh16.github.io/#website",
+        "url": "https://panshulbh16.github.io/",
+        "name": "Panshul Bharadwaj",
+        "description": "Portfolio of Panshul Bharadwaj, a product engineer in Bengaluru, with four live products: Duely, Roamly, Tailor and Opportunity Hunter.",
+        "inLanguage": "en",
+        "author": { "@id": "https://panshulbh16.github.io/#person" },
+        "publisher": { "@id": "https://panshulbh16.github.io/#person" }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://panshulbh16.github.io/#webpage",
+        "url": "https://panshulbh16.github.io/",
+        "name": "Panshul Bharadwaj — Product engineer",
+        "inLanguage": "en",
+        "dateModified": "2026-10-12",
+        "isPartOf": { "@id": "https://panshulbh16.github.io/#website" },
+        "mainEntity": { "@id": "https://panshulbh16.github.io/#person" },
+        "about": { "@id": "https://panshulbh16.github.io/#person" },
+        "author": { "@id": "https://panshulbh16.github.io/#person" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://panshulbh16.github.io/assets/img/og.png",
+          "width": 1200,
+          "height": 630
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://panshulbh16.github.io/#person",
+        "name": "Panshul Bharadwaj",
+        "url": "https://panshulbh16.github.io/",
+        "email": "mailto:bharadwajpanshul@gmail.com",
+        "description": "Product engineer in Bengaluru who designs, builds and ships software products, and builds on Oracle Fusion Cloud CRM at Deloitte.",
+        "jobTitle": ["Product engineer", "Technology Consultant"],
+        "worksFor": { "@type": "Organization", "name": "Deloitte" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "Karnataka",
+          "addressCountry": "IN"
+        },
+        "knowsAbout": [
+          "Product engineering",
+          "Full-stack web development",
+          "Oracle Fusion Cloud CRM",
+          "Oracle Redwood",
+          "Oracle Visual Builder Cloud Service (VBCS)",
+          "TypeScript",
+          "Next.js",
+          "React Native",
+          "Cloudflare Workers",
+          "Claude API"
+        ],
+        "sameAs": [
+          "https://github.com/panshulbh16",
+          "https://www.linkedin.com/in/panshul-bharadwaj"
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://panshulbh16.github.io/#products",
+        "name": "Products by Panshul Bharadwaj",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Duely",
+              "url": "https://heyduely.com/",
+              "description": "Subscription tracker for web, iOS and Android: every subscription in one place, with monthly and yearly spend and a reminder before each renewal or free trial turns into a charge.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Web, iOS, Android",
+              "screenshot": "https://panshulbh16.github.io/assets/img/duely.png",
+              "creator": { "@id": "https://panshulbh16.github.io/#person" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "WebApplication",
+              "name": "Roamly",
+              "url": "https://heyroamly.com/",
+              "description": "AI trip planner that turns a destination, dates, budget and pace into a day-by-day itinerary, then lets you publish the trip and invite people along.",
+              "applicationCategory": "TravelApplication",
+              "operatingSystem": "Web",
+              "screenshot": "https://panshulbh16.github.io/assets/img/roamly.png",
+              "creator": { "@id": "https://panshulbh16.github.io/#person" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "WebApplication",
+              "name": "Tailor",
+              "url": "https://tailor-production-6d17.up.railway.app/",
+              "description": "AI résumé tool: paste a résumé and a job description to get an honest fit score, the gaps, and a résumé rewritten for that role using only what is on it.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "screenshot": "https://panshulbh16.github.io/assets/img/tailor.png",
+              "creator": { "@id": "https://panshulbh16.github.io/#person" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "WebApplication",
+              "name": "Opportunity Hunter",
+              "url": "https://opportunityhunter.xyz/",
+              "description": "Job-matching agent that searches licensed listings, scores each one 0–100 against your profile with a reason, and tracks what you apply to.",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "screenshot": "https://panshulbh16.github.io/assets/img/opportunity-hunter.png",
+              "creator": { "@id": "https://panshulbh16.github.io/#person" }
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <script>
@@ -97,8 +217,8 @@
           <a class="window" href="https://heyduely.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <span class="window-bar">heyduely.com</span>
             <picture>
-              <source type="image/webp" srcset="./assets/img/duely.webp">
-              <img src="./assets/img/duely.png" alt="Duely dashboard: ₹7,911 a month across 10 active subscriptions, with upcoming renewals and spend by category" width="1600" height="1000" decoding="async" fetchpriority="high">
+              <source type="image/webp" srcset="./assets/img/duely-800.webp 800w, ./assets/img/duely.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), (max-width: 1260px) 50vw, 616px">
+              <img src="./assets/img/duely.png" alt="Duely dashboard: ₹7,911 a month across 10 active subscriptions, with upcoming renewals and spend by category" width="1600" height="1000" decoding="async">
             </picture>
           </a>
         </article>
@@ -116,7 +236,7 @@
           <a class="window" href="https://heyroamly.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <span class="window-bar">heyroamly.com</span>
             <picture>
-              <source type="image/webp" srcset="./assets/img/roamly.webp">
+              <source type="image/webp" srcset="./assets/img/roamly-800.webp 800w, ./assets/img/roamly-1200.webp 1200w, ./assets/img/roamly.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), (max-width: 1260px) 50vw, 616px">
               <img src="./assets/img/roamly.png" alt="Roamly trip planner: Where to next, with a Dolomites photo above the trip form" width="1600" height="1000" decoding="async">
             </picture>
           </a>
@@ -129,13 +249,13 @@
             <p>Paste a résumé and a job description. Tailor returns an honest fit score, the gaps, and a résumé rewritten for that role, using only what's on it.</p>
             <p class="card-actions">
               <button class="button small" type="button" data-study="study-tailor" aria-haspopup="dialog">Case study</button>
-              <a class="visit" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Open Tailor</a>
+              <a class="visit" href="https://tailor-production-6d17.up.railway.app/" target="_blank" rel="noopener">Open Tailor</a>
             </p>
           </div>
-          <a class="window" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <a class="window" href="https://tailor-production-6d17.up.railway.app/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <span class="window-bar">tailor.up.railway.app</span>
             <picture>
-              <source type="image/webp" srcset="./assets/img/tailor.webp">
+              <source type="image/webp" srcset="./assets/img/tailor-800.webp 800w, ./assets/img/tailor.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), (max-width: 1260px) 50vw, 616px">
               <img src="./assets/img/tailor.png" alt="Tailor: Your résumé, matched to the job, with résumé and job-description boxes beside a results panel" width="1600" height="1000" loading="lazy" decoding="async">
             </picture>
           </a>
@@ -148,13 +268,13 @@
             <p>Describe the role you want. It keeps searching licensed listings, scores each one 0–100 against your profile with a reason, and tracks what you apply to.</p>
             <p class="card-actions">
               <button class="button small" type="button" data-study="study-hunter" aria-haspopup="dialog">Case study</button>
-              <a class="visit" href="https://opportunityhunter.xyz" target="_blank" rel="noopener">opportunityhunter.xyz</a>
+              <a class="visit" href="https://opportunityhunter.xyz/" target="_blank" rel="noopener">opportunityhunter.xyz</a>
             </p>
           </div>
-          <a class="window" href="https://opportunityhunter.xyz" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <a class="window" href="https://opportunityhunter.xyz/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <span class="window-bar">opportunityhunter.xyz</span>
             <picture>
-              <source type="image/webp" srcset="./assets/img/opportunity-hunter.webp">
+              <source type="image/webp" srcset="./assets/img/opportunity-hunter-800.webp 800w, ./assets/img/opportunity-hunter-1200.webp 1200w, ./assets/img/opportunity-hunter.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), (max-width: 1260px) 50vw, 616px">
               <img src="./assets/img/opportunity-hunter.png" alt="Opportunity Hunter landing page: Stop Searching. Start Getting Matched, above a 92% match card for a backend role" width="1600" height="1000" loading="lazy" decoding="async">
             </picture>
           </a>
@@ -302,7 +422,7 @@
         <figure class="schematic" data-schematic="tailor" aria-label="How Tailor is built"></figure>
       </details>
       <p class="study-links">
-        <a class="button primary" href="https://tailor-production-6d17.up.railway.app" target="_blank" rel="noopener">Open Tailor</a>
+        <a class="button primary" href="https://tailor-production-6d17.up.railway.app/" target="_blank" rel="noopener">Open Tailor</a>
         <a class="button" href="https://github.com/panshulbh16/tailor" target="_blank" rel="noopener">Source</a>
       </p>
     </div>
@@ -335,7 +455,7 @@
         <figure class="schematic" data-schematic="opportunity-hunter" aria-label="How Opportunity Hunter is built"></figure>
       </details>
       <p class="study-links">
-        <a class="button primary" href="https://opportunityhunter.xyz" target="_blank" rel="noopener">Open opportunityhunter.xyz</a>
+        <a class="button primary" href="https://opportunityhunter.xyz/" target="_blank" rel="noopener">Open opportunityhunter.xyz</a>
         <a class="button" href="https://github.com/panshulbh16/opportunity-hunter" target="_blank" rel="noopener">Source</a>
       </p>
     </div>
