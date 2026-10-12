@@ -35,6 +35,7 @@
   --roamly: #f59e4b;
   --tailor: #a78bfa;
   --hunter: #4f8dff;
+  --lathe: #22c3d6;
 
   --display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
   --sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -260,6 +261,7 @@ h1 {
 }
 .span-7 { grid-column: span 7; }
 .span-5 { grid-column: span 5; }
+.span-12 { grid-column: 1 / -1; }
 
 .card {
   position: relative;

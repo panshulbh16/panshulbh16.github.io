@@ -17,6 +17,7 @@ html, body { overflow-x: clip; }
 .section-head { padding-block: 40px; margin-bottom: 0; }
 .section-head h2 { font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -.035em; }
 .bento { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px 32px; perspective: 1600px; }
+.card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .card { grid-column: auto; min-height: 0; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; border-radius: 10px; transform-origin: center top; }
 .card::before { background: linear-gradient(125deg, color-mix(in srgb, var(--hue) 13%, transparent), transparent 65%); }
 .card-copy { padding: 32px; width: 100%; }
