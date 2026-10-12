@@ -1,5 +1,4 @@
 import { pickActiveSection } from "./scroll-spy.js";
-import { mountSchematic, SCHEMATICS } from "./schematics.js";
 
 const root = document.documentElement;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -83,75 +82,5 @@ links.forEach(a => {
       lockId = null;
       syncNav();
     }, reduceMotion ? 50 : 800);
-  });
-});
-
-/* ---------- Case-study tabs ---------- */
-
-document.querySelectorAll("[data-tabs]").forEach(group => {
-  const buttons = [...group.querySelectorAll("[role='tab']")];
-  const panels = [...group.querySelectorAll("[role='tabpanel']")];
-  const activate = id => {
-    buttons.forEach(b => {
-      const on = b.id === id;
-      b.setAttribute("aria-selected", on ? "true" : "false");
-      b.tabIndex = on ? 0 : -1;
-    });
-    panels.forEach(p => {
-      p.hidden = p.getAttribute("aria-labelledby") !== id;
-    });
-  };
-  buttons.forEach((b, i) => {
-    b.addEventListener("click", () => activate(b.id));
-    b.addEventListener("keydown", e => {
-      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      const edge = { Home: 0, End: buttons.length - 1 }[e.key];
-      if (step === undefined && edge === undefined) return;
-      e.preventDefault();
-      const next = edge ?? (i + step + buttons.length) % buttons.length;
-      buttons[next].focus();
-      activate(buttons[next].id);
-    });
-  });
-});
-
-/* ---------- Case studies ---------- */
-
-// A diagram is drawn the first time its "How it's built" is opened, when it has a size to lay out against.
-document.querySelectorAll("details.built").forEach(details => {
-  details.addEventListener("toggle", () => {
-    const figure = details.querySelector("[data-schematic]");
-    if (!details.open || !figure || figure.dataset.mounted) return;
-    const spec = SCHEMATICS[figure.dataset.schematic];
-    if (!spec) return;
-    figure.dataset.mounted = "";
-    mountSchematic(figure, spec, { animate: !reduceMotion });
-  });
-});
-
-let opener = null;
-document.querySelectorAll("[data-study]").forEach(button => {
-  const dialog = document.getElementById(button.dataset.study);
-  if (!dialog) return;
-  button.addEventListener("click", () => {
-    opener = button;
-    dialog.showModal();
-    dialog.scrollTop = 0;
-    dialog.querySelector("[data-close]")?.focus();
-  });
-});
-document.querySelectorAll("dialog.study").forEach(dialog => {
-  dialog.querySelector("[data-close]")?.addEventListener("click", () => dialog.close());
-  // A click on the dimmed page beside the panel closes it.
-  dialog.addEventListener("click", e => {
-    if (e.target === dialog) {
-      const r = dialog.getBoundingClientRect();
-      const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-      if (!inside) dialog.close();
-    }
-  });
-  dialog.addEventListener("close", () => {
-    opener?.focus({ preventScroll: true });
-    opener = null;
   });
 });

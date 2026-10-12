@@ -1,0 +1,68 @@
+/* Draft: the existing projects become the moving visual material. */
+:root { --radius: 8px; }
+html, body { overflow-x: clip; }
+::selection { background: var(--ink); color: var(--bg); }
+.hero { position: relative; min-height: 92svh; display: flex; align-items: center; padding-block: 80px 120px; }
+.hero-text { position: relative; z-index: 2; width: 55%; }
+.hero h1 { font-size: clamp(3.8rem, 7.4vw, 6rem); line-height: .96; }
+.name-dot { color: var(--duely); }
+.role { max-width: 25ch; margin-top: 28px; font-size: clamp(1.3rem, 2vw, 1.65rem); }
+.lede { max-width: 43ch; font-size: 1rem; }
+.perspective-scene { position: absolute; width: 53%; right: -5%; top: 10%; height: 75%; perspective: 1100px; pointer-events: none; }
+.perspective-grid { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-content: center; transform: rotateX(15deg) rotateY(-24deg) rotateZ(12deg); }
+.perspective-grid img { width: 100%; height: 240px; object-fit: cover; object-position: top left; border: 1px solid var(--line-strong); border-radius: 6px; box-shadow: 14px 30px 50px -24px #0009; }
+.perspective-grid img:nth-child(even) { translate: 0 65px; }
+.explore-work { position: absolute; bottom: 36px; left: 0; display: flex; gap: 28px; align-items: center; text-decoration: none; color: var(--muted); font-size: 14px; }
+.explore-work span { font-size: 24px; color: var(--ink); }
+.section-head { padding-block: 40px; margin-bottom: 0; }
+.section-head h2 { font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -.035em; }
+.bento { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px 32px; perspective: 1600px; }
+.card { grid-column: auto; min-height: 0; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; border-radius: 10px; transform-origin: center top; }
+.card::before { background: linear-gradient(125deg, color-mix(in srgb, var(--hue) 13%, transparent), transparent 65%); }
+.card-copy { padding: 32px; width: 100%; }
+.card h3 { font-size: clamp(2rem, 3.5vw, 3.2rem); letter-spacing: -.035em; margin-block: 22px 18px; }
+.card .kind { font-size: 13px; }
+.window { width: calc(100% - 48px); margin: auto 24px 24px; padding: 16px 0 0; transform: none; }
+.window picture { aspect-ratio: 16/11; flex: none; min-height: 0; border-radius: 0 0 0 8px; }
+.window-bar { border-radius: 8px 0 0 0; }
+.card:hover .window { transform: translateY(-6px); }
+.split { border-top: 1px solid var(--line); margin-top: 90px; padding-top: 60px; }
+.job { background: transparent; border: 0; border-radius: 0; padding: 0 0 28px; border-bottom: 1px solid var(--line); }
+.contact { padding-top: 120px; }
+.button { transition: background .2s, color .2s; }
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .motion-ready .work { height: auto; }
+  .motion-ready .bento { display: block; perspective: none; }
+  .motion-ready .card { position: sticky; top: 86px; display: grid; grid-template-columns: 36% 64%; height: calc(100svh - 120px); min-height: 0; border-radius: 12px; margin-bottom: 45svh; }
+  .motion-ready .card:last-child { margin-bottom: 0; }
+  .motion-ready .card-copy { padding: 40px; }
+  .motion-ready .card h3 { font-size: clamp(2.5rem, 4vw, 4rem); }
+  .motion-ready .window { margin: 0; width: 100%; align-self: center; padding: 0; }
+  .motion-ready .window picture { aspect-ratio: 16/12; }
+  .motion-ready .card::before { background: linear-gradient(110deg, color-mix(in srgb, var(--hue) 24%, var(--surface)), var(--surface)); }
+  .motion-ready .card:hover .window { transform: none; }
+}
+@media (max-width: 900px) {
+  .hero { min-height: auto; display: block; padding-block: 64px 80px; }
+  .hero-text { width: 100%; }
+  .perspective-scene { position: relative; width: 90%; right: auto; top: auto; height: 390px; margin: 20px auto 40px; }
+  .perspective-grid img { height: 170px; }
+  .bento { grid-template-columns: 1fr; gap: 28px; }
+  .card { min-height: auto; }
+  .card-copy { padding: 28px; }
+  .window { margin: 0 24px 24px; transform: none; }
+  .card:hover .window { transform: none; }
+  .window picture { aspect-ratio: 16/10; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(3.2rem, 13vw, 4.5rem); }
+  .perspective-scene { height: 310px; width: 95%; }
+  .perspective-grid { gap: 12px; }
+  .perspective-grid img { height: 125px; }
+  .card-actions { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .perspective-grid { transform: none; }
+  .perspective-grid img:nth-child(even) { translate: none; }
+  .window, .card:hover .window { transform: none; transition: none; }
+}
