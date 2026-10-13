@@ -1,0 +1,16 @@
+{
+  "name": "panshulbh16.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node apps/molbhav/build.mjs",
+    "test:unit": "node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test": "npm run build && npm run test:unit && npm run test:e2e",
+    "serve": "node e2e/serve.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}
