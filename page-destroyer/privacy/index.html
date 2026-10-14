@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" style="color-scheme: dark light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Privacy policy — Page Destroyer</title>
+  <meta name="description" content="Page Destroyer collects nothing, stores nothing and makes no network requests. Full privacy policy for the Chrome extension.">
+  <link rel="canonical" href="https://panshulbh16.github.io/page-destroyer/privacy/">
+  <meta name="theme-color" content="#0e1014">
+  <script>
+    try {
+      const t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch {}
+  </script>
+  <link rel="icon" href="../icon128.png" type="image/png">
+  <link rel="preload" href="../../assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/site.css">
+  <style>
+    :root { --hue: var(--destroyer); }
+    .policy { max-width: 720px; padding-block: clamp(48px, 7vw, 88px) 0; }
+    .policy .kind { font-size: 14px; }
+    .policy h1 { margin-top: 16px; font-size: clamp(2.4rem, 5.6vw, 3.6rem); }
+    .policy .effective { margin: 14px 0 0; color: var(--faint); font-size: 15px; }
+    .policy .summary { margin: 28px 0 0; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--hue) 10%, var(--surface)); font-size: 1.05rem; }
+    .policy h2 { margin: 44px 0 10px; font-size: 1.35rem; font-weight: 650; line-height: 1.2; }
+    .policy p, .policy li { color: var(--muted); }
+    .policy p { margin: 0 0 12px; }
+    .policy ul { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+    .policy strong { color: var(--ink); font-weight: 600; }
+    .policy a { color: var(--ink); }
+    .policy-footer { padding-block: clamp(56px, 8vw, 96px) 48px; }
+    .policy-footer .site-footer { margin-top: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+    .policy-footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="wordmark" href="/">Panshul Bharadwaj</a>
+      <nav class="section-nav" aria-label="Site">
+        <a href="../">Page Destroyer</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="content" class="wrap policy">
+    <p class="kind">Page Destroyer</p>
+    <h1>Privacy policy</h1>
+    <p class="effective">Effective 14 October 2026</p>
+    <p class="summary">Page Destroyer is a Chrome extension by Panshul Bharadwaj. It collects nothing, stores nothing and sends nothing anywhere.</p>
+
+    <h2>What is collected</h2>
+    <p>Nothing. Page Destroyer does not collect, record or transmit any personal information, browsing history, page content, keystrokes, mouse movements or usage statistics.</p>
+
+    <h2>What is stored</h2>
+    <p>Nothing. The extension does not use cookies, local storage, sync storage or any other storage. The damage you draw on a page exists only on your screen and disappears when you click Repair, press Esc, or reload or leave the page.</p>
+
+    <h2>Network activity</h2>
+    <p>None. Page Destroyer makes no network requests. There are no analytics, no ads, no tracking and no remote code. Sound effects are generated inside your browser with the Web Audio API, so even the audio is created locally.</p>
+
+    <h2>Permissions and why they are needed</h2>
+    <ul>
+      <li><strong>activeTab</strong> lets the extension run on the tab you are looking at, and only after you click the toolbar icon or press Alt+Shift+D. It gives no access to other tabs or to any page you have not chosen to destroy.</li>
+      <li><strong>scripting</strong> is used to add the destroyer overlay (destroyer.js, which ships inside the extension) to that tab when you activate it.</li>
+      <li><strong>Background service worker</strong> listens for the toolbar click or keyboard shortcut and starts the overlay. It does nothing else.</li>
+    </ul>
+    <p style="margin-top: 14px">The extension requests no host permissions and cannot read or change pages on its own.</p>
+
+    <h2>Sharing</h2>
+    <p>Because no data is collected, none is sold, shared or transferred to anyone, and none is used for advertising, creditworthiness or any purpose unrelated to the extension’s single function.</p>
+
+    <h2>Children</h2>
+    <p>The extension collects no information from anyone, including children.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy: <a href="mailto:bharadwajpanshul@gmail.com">bharadwajpanshul@gmail.com</a></p>
+  </main>
+
+  <footer class="wrap policy-footer">
+    <p class="site-footer"><span>Built by <a href="/">Panshul Bharadwaj</a></span><a href="../">Back to Page Destroyer</a></p>
+  </footer>
+
+  <script type="module" src="../../assets/site.js"></script>
+</body>
+</html>

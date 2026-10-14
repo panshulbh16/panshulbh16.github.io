@@ -319,6 +319,26 @@
           </a>
         </article>
       </div>
+
+      <article class="side-build" id="page-destroyer" style="--hue: var(--destroyer)" aria-labelledby="destroyer-title">
+        <div class="side-copy">
+          <p class="kind">Chrome extension · small build</p>
+          <h3 id="destroyer-title">Page Destroyer</h3>
+          <p>Stuck on a slow portal or a ticket that won’t move? Click the icon and smash the page with a hammer, a gun, a chainsaw or fire. Nothing is saved and nothing leaves your browser.</p>
+          <p class="side-actions">
+            <a class="button primary" href="/page-destroyer/page-destroyer.zip" download="page-destroyer.zip" data-chrome-link><span data-chrome-label>Download for Chrome</span></a>
+            <button class="button" type="button" data-destroy-here>Smash this page</button>
+            <a class="visit" href="./page-destroyer/">How it works</a>
+          </p>
+        </div>
+        <a class="window" href="./page-destroyer/" tabindex="-1" aria-hidden="true">
+          <span class="window-bar">any website you’re stuck on</span>
+          <picture>
+            <source type="image/webp" srcset="./assets/img/page-destroyer-800.webp 800w, ./assets/img/page-destroyer-1200.webp 1200w, ./assets/img/page-destroyer.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), 680px">
+            <img src="./assets/img/page-destroyer.png" alt="This portfolio after a Page Destroyer session: glass cracks across the name, a chainsaw cut through the intro, bullet holes and a scorch mark, with the weapon toolbar at the bottom" width="1600" height="1000" loading="lazy" decoding="async">
+          </picture>
+        </a>
+      </article>
     </section>
 
     <section class="wrap split" id="about" aria-labelledby="about-title">
@@ -382,5 +402,6 @@
 
   <script type="module" src="./assets/site.js"></script>
 <script type="module" src="./assets/draft.js"></script>
+<script type="module" src="./page-destroyer/store.js"></script>
 </body>
 </html>

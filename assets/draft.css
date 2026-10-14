@@ -43,6 +43,25 @@ html, body { overflow-x: clip; }
   .motion-ready .card::before { background: linear-gradient(110deg, color-mix(in srgb, var(--hue) 24%, var(--surface)), var(--surface)); }
   .motion-ready .card:hover .window { transform: none; }
 }
+/* Page Destroyer: a small build, set apart below the five products. */
+.side-build { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; align-items: center; margin-top: 72px; padding: 36px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; isolation: isolate; }
+.side-build::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, color-mix(in srgb, var(--hue) 18%, var(--surface)), var(--surface) 62%); }
+.side-copy { min-width: 0; }
+.side-build .kind { font-size: 13px; }
+.side-build h3 { margin: 18px 0 14px; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
+.side-copy > p:not(.kind):not(.side-actions) { max-width: 44ch; color: var(--muted); }
+.side-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 24px 0 0; }
+.side-build .window { width: 100%; margin: 0; padding: 0; min-width: 0; }
+.side-build .window-bar { border-radius: 8px 8px 0 0; }
+.side-build .window picture { flex: none; aspect-ratio: 16 / 10; min-height: 0; border-radius: 0 0 8px 8px; }
+.side-build:hover .window { transform: translateY(-6px); }
+@media (max-width: 900px) {
+  .side-build { grid-template-columns: 1fr; gap: 24px; margin-top: 28px; padding: 28px; }
+  .side-build:hover .window { transform: none; }
+}
+@media (max-width: 480px) {
+  .side-build { padding: 22px 20px; }
+}
 @media (max-width: 900px) {
   .hero { min-height: auto; display: block; padding-block: 64px 80px; }
   .hero-text { width: 100%; }
@@ -65,5 +84,5 @@ html, body { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   .perspective-grid { transform: none; }
   .perspective-grid img:nth-child(even) { translate: none; }
-  .window, .card:hover .window { transform: none; transition: none; }
+  .window, .card:hover .window, .side-build:hover .window { transform: none; transition: none; }
 }

@@ -11,6 +11,25 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('body')).not.toContainText(/lathe/i);
   });
 
+  test('Page Destroyer is listed with a working install link, its own page and a privacy policy', async ({ page, request }) => {
+    await page.goto('/');
+    const section = page.locator('#page-destroyer');
+    await expect(section.locator('h3')).toHaveText('Page Destroyer');
+    const install = section.locator('[data-chrome-link]');
+    const href = await install.getAttribute('href');
+    expect(href === '/page-destroyer/page-destroyer.zip' || href.startsWith('https://chromewebstore.google.com/')).toBe(true);
+    if (!href.startsWith('https://')) expect((await request.get(href)).ok()).toBe(true);
+    await section.locator('[data-destroy-here]').click();
+    await expect(page.locator('[data-page-destroyer]')).toHaveCount(1);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('[data-page-destroyer]')).toHaveCount(0);
+    for (const path of ['/page-destroyer/', '/page-destroyer/privacy/']) {
+      const res = await page.goto(path);
+      expect(res.ok()).toBe(true);
+    }
+    await expect(page.locator('h1')).toContainText('Privacy');
+  });
+
   test('demo loads with the live-demo banner and the scale logo', async ({ app, page }) => {
     await app.open({ fixedTime: false, hooks: false });
     await expect(page).toHaveTitle('Molbhav · live demo');
