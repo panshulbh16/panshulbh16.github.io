@@ -30,6 +30,20 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
+  test('every project has a shareable link with a copy button', async ({ page, context }) => {
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    await page.goto('/');
+    const buttons = page.locator('.share-row [data-share-url]');
+    await expect(buttons).toHaveCount(6);
+    for (const url of await buttons.evaluateAll(els => els.map(e => e.dataset.shareUrl))) {
+      expect(url).toMatch(/^https:\/\//);
+    }
+    const first = buttons.first();
+    await first.click();
+    await expect(first).toHaveText('Copied');
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('https://heyduely.com/');
+  });
+
   test('demo loads with the live-demo banner and the scale logo', async ({ app, page }) => {
     await app.open({ fixedTime: false, hooks: false });
     await expect(page).toHaveTitle('Molbhav · live demo');

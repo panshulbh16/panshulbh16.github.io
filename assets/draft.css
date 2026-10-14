@@ -43,6 +43,13 @@ html, body { overflow-x: clip; }
   .motion-ready .card::before { background: linear-gradient(110deg, color-mix(in srgb, var(--hue) 24%, var(--surface)), var(--surface)); }
   .motion-ready .card:hover .window { transform: none; }
 }
+/* A shareable link under each project, with a copy (or share-sheet) button. */
+.share-row { display: flex; align-items: center; gap: 6px; width: fit-content; max-width: 100%; margin: 16px 0 0; padding: 4px 4px 4px 12px; border: 1px solid var(--line-strong); border-radius: 999px; background: color-mix(in srgb, var(--bg) 55%, transparent); font-size: 13.5px; }
+.share-url { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); user-select: all; -webkit-user-select: all; }
+.share-btn { flex: none; height: 28px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--raise); color: var(--ink); font: 500 13px/1 var(--sans); cursor: pointer; transition: background .2s, color .2s; }
+.share-btn:hover { background: color-mix(in srgb, var(--hue) 22%, var(--raise)); }
+.share-btn.is-done { background: var(--hue); color: #0e1014; }
+
 /* Page Destroyer: a small build, set apart below the five products. */
 .side-build { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 36px; align-items: center; margin-top: 72px; padding: 36px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; isolation: isolate; }
 .side-build::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, color-mix(in srgb, var(--hue) 18%, var(--surface)), var(--surface) 62%); }
