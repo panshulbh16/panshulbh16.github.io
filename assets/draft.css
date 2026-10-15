@@ -88,6 +88,20 @@ html, body { overflow-x: clip; }
   .perspective-grid img { height: 125px; }
   .card-actions { gap: 12px; }
 }
+/* Phones and tablets: the same stacking scroll as desktop, in a single column. */
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .motion-ready .bento { display: block; perspective: none; }
+  .motion-ready .card { position: sticky; top: var(--stick, 72px); margin-bottom: 22svh; transform-origin: center top; will-change: transform; }
+  .motion-ready .card:last-child { margin-bottom: 0; }
+  .motion-ready .card::before { background: linear-gradient(125deg, color-mix(in srgb, var(--hue) 22%, var(--surface)), var(--surface) 70%); }
+  .motion-ready .perspective-grid { will-change: transform; }
+  .motion-ready .card-copy { padding: 22px 22px 0; }
+  .motion-ready .card h3 { font-size: 2rem; margin-block: 12px 8px; }
+  .motion-ready .card-copy > p:not(.kind) { margin-bottom: 0; }
+  .motion-ready .card .share-row { margin-top: 12px; }
+  .motion-ready .window { margin: 16px 18px 18px; width: auto; padding: 0; }
+  .motion-ready .window picture { aspect-ratio: 16 / 9; }
+}
 @media (prefers-reduced-motion: reduce) {
   .perspective-grid { transform: none; }
   .perspective-grid img:nth-child(even) { translate: none; }
