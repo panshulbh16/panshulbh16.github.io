@@ -107,3 +107,13 @@ html, body { overflow-x: clip; }
   .perspective-grid img:nth-child(even) { translate: none; }
   .window, .card:hover .window, .side-build:hover .window { transform: none; transition: none; }
 }
+
+/* At a glance: four big numbers between the work and the experience. */
+.numbers { padding-top: clamp(72px, 10vw, 120px); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.stats li { display: flex; flex-direction: column; gap: 10px; padding: 26px 24px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(150deg, color-mix(in srgb, var(--hue) 14%, var(--surface)), var(--surface) 70%); }
+.stats strong { font: 700 clamp(2.6rem, 5vw, 3.6rem)/1 var(--display); letter-spacing: -.04em; color: var(--ink); }
+.stats strong::after { content: "."; color: var(--hue); }
+.stats span { max-width: 22ch; color: var(--muted); font-size: 15px; line-height: 1.4; }
+@media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
+@media (max-width: 400px) { .stats li { padding: 20px 16px; } .stats span { font-size: 14px; } }
