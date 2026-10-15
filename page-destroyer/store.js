@@ -2,7 +2,7 @@
 // Once the Chrome Web Store listing is approved, paste its link into STORE_URL, e.g.
 // export const STORE_URL = "https://chromewebstore.google.com/detail/page-destroyer/abcdefghijklmnop";
 // Every "Add to Chrome" button then opens the store instead of downloading the zip.
-export const STORE_URL = "";
+export const STORE_URL = "https://chromewebstore.google.com/detail/page-destroyer/bocojoojllaabmifnbjiehdodgmlccah";
 
 export const ZIP_URL = "/page-destroyer/page-destroyer.zip";
 export const SCRIPT_URL = "/page-destroyer/destroyer.js";
