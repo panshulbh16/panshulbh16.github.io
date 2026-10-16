@@ -178,7 +178,7 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./assets/site.css?v=20261015">
+  <link rel="stylesheet" href="./assets/site.css?v=20261017">
 <link rel="stylesheet" href="./assets/draft.css?v=20261015">
 </head>
 <body>
@@ -259,10 +259,10 @@
           </div>
           <a class="window" href="https://heyroamly.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
             <span class="window-bar">heyroamly.com</span>
-            <picture>
-              <source type="image/webp" srcset="./assets/img/roamly-800.webp 800w, ./assets/img/roamly-1200.webp 1200w, ./assets/img/roamly.webp 1600w" sizes="(max-width: 900px) calc(100vw - 64px), (max-width: 1260px) 50vw, 616px">
-              <img src="./assets/img/roamly.png" alt="Roamly trip planner: Where to next, with a Dolomites photo above the trip form" width="1600" height="1000" decoding="async">
-            </picture>
+            <video class="window-video" muted loop playsinline preload="none" poster="./assets/img/roamly-video-poster.webp" width="1600" height="1000" aria-label="Roamly planning a Lisbon to Porto road trip">
+              <source src="./assets/video/roamly.webm" type="video/webm">
+              <source src="./assets/video/roamly.mp4" type="video/mp4">
+            </video>
           </a>
         </article>
 
@@ -406,6 +406,7 @@
 
 
   <script type="module" src="./assets/site.js?v=20261015"></script>
+  <script src="./assets/card-video.js?v=20261017" defer></script>
 <script type="module" src="./assets/draft.js?v=20261015"></script>
 <script type="module" src="./page-destroyer/store.js?v=20261015"></script>
 <script type="module" src="./assets/share.js?v=20261015"></script>
