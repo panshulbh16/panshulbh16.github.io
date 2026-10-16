@@ -351,7 +351,8 @@ h1 {
   font-size: 12px;
   text-align: center;
 }
-.window picture {
+.window picture,
+.window video {
   flex: 1 1 auto;
   display: block;
   min-height: 240px;
@@ -361,7 +362,8 @@ h1 {
   background: #fff;
   box-shadow: var(--shadow);
 }
-.window img {
+.window img,
+.window video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -650,7 +652,7 @@ h1 {
 @media (max-width: 900px) {
   .span-7, .span-5 { grid-column: 1 / -1; }
   .card { min-height: 0; }
-  .window picture { flex: none; aspect-ratio: 16 / 10; min-height: 0; }
+  .window picture, .window video { flex: none; aspect-ratio: 16 / 10; min-height: 0; }
   .split { grid-template-columns: 1fr; }
 }
 
