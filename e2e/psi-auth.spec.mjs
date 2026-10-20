@@ -106,9 +106,11 @@ test.afterEach(async ({ page }) => {
 // For tests where the mock returns an HTTP error on purpose: the browser logs "Failed to load resource" for it.
 // Allow exactly those console errors and still fail on anything else.
 function allowHttpErrors(page, statuses) {
-  test.info().annotations.push({ type: 'allow-console-errors', description: `expected HTTP ${statuses.join('/')} from mocked Supabase` });
+  return allowConsole(page, new RegExp(`Failed to load resource: the server responded with a status of (${statuses.join('|')})`), `expected HTTP ${statuses.join('/')} from mocked Supabase`);
+}
+function allowConsole(page, re, why) {
+  test.info().annotations.push({ type: 'allow-console-errors', description: why });
   const other = [];
-  const re = new RegExp(`Failed to load resource: the server responded with a status of (${statuses.join('|')})`);
   page.on('pageerror', e => other.push(`pageerror: ${e.message}`));
   page.on('console', msg => { if (msg.type() === 'error' && !re.test(msg.text())) other.push(`console: ${msg.text()}`); });
   return () => expect(other, 'unexpected browser errors').toEqual([]);
@@ -195,6 +197,7 @@ test.describe('cloud sync @smoke', () => {
         if (t && window.__st.at(-1) !== t) window.__st.push(t);
       }).observe(document.getElementById('account'), { childList: true, subtree: true });
     });
+    await page.locator('#c-fc-0').fill('');
     await page.locator('#c-fc-0').pressSequentially('1234', { delay: 40 });
     await expect(status(page)).toHaveText('Unsaved changes');
     expect(m.saves(), 'nothing is sent while typing').toHaveLength(0);
@@ -515,6 +518,8 @@ test('the planner hides itself inside a cross-origin frame', async ({ page }) =>
   // Serve the planner from a second origin by proxying http://planner.test to the test server.
   // (Framing 127.0.0.1 straight from a mocked page trips Chromium's private-network checks.)
   const framer = 'http://framer.test/';
+  // Chromium blocks (and logs) the frame's attempt to navigate the cross-origin top window; cloud.js then stays hidden.
+  const done = allowConsole(page, /^Unsafe attempt to initiate navigation for frame with URL 'http:\/\/framer\.test\/'/, 'blocked frame-busting navigation');
   await page.route(framer, r => r.fulfill({ contentType: 'text/html', body: '<!doctype html><title>framer</title><iframe src="http://planner.test/psi-planner/" width="800" height="600"></iframe>' }));
   await page.route('http://planner.test/**', async r => {
     const res = await r.fetch({ url: r.request().url().replace('http://planner.test', 'http://127.0.0.1:4173') });
@@ -528,6 +533,7 @@ test('the planner hides itself inside a cross-origin frame', async ({ page }) =>
   expect(await f.evaluate(() => typeof window.PSICloud)).toBe('undefined');
   await expect(frame.locator('#psi')).toBeHidden();
   expect(page.url()).toBe(framer);
+  done();
 });
 
 test('the planner breaks out of a same-origin frame', async ({ page }) => {

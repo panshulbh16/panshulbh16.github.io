@@ -6,7 +6,7 @@ create table if not exists public.psi_workspaces (
   data       jsonb not null,
   updated_at timestamptz not null default now(),
   constraint psi_workspaces_data_is_object check (jsonb_typeof(data) = 'object'),
-  constraint psi_workspaces_data_size check (octet_length(data::text) <= 1000000)
+  constraint psi_workspaces_data_size check (octet_length(data::text) <= 2000000)
 );
 
 alter table public.psi_workspaces enable row level security;

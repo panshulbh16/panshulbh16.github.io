@@ -16,7 +16,7 @@ The planner at `/psi-planner/` runs in demo mode until `psi-planner/config.js` h
 ## Security model
 
 - The anon key is public by design. Row-level security is forced on the table, `anon` has no grants, and every policy checks `auth.uid() = user_id`, so a user can only read and write their own row.
-- The row size is capped at about 1 MB in the database; the client refuses to save above 900 KB.
+- The client refuses to save above 900 KB of compact JSON. The database cap is 2 MB of jsonb text, because jsonb's text form adds spaces and runs 1.2–1.4× larger.
 - Saves use optimistic concurrency on `updated_at`. If another device saved first, the user chooses to load the latest version or overwrite it.
 - Sign-in uses the PKCE flow. Tokens in the URL are removed after sign-in.
 - The page has a strict Content-Security-Policy: scripts only from this site, network calls only to this site and `*.supabase.co`, no inline scripts, no third-party fonts. The Supabase client is self-hosted in `psi-planner/vendor/`.
