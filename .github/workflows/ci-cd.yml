@@ -29,24 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build the Molbhav demo
-        run: npm run build
-
-      - name: Check the committed demo matches the source
-        run: |
-          if ! git diff --quiet -- molbhav/index.html; then
-            echo "::error file=molbhav/index.html::molbhav/index.html is out of date. Run 'npm run build' and commit the result."
-            git diff --stat -- molbhav/index.html
-            exit 1
-          fi
-
       - name: Portfolio unit tests
         run: npm run test:unit
 
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
 
-      - name: End-to-end tests (Molbhav + portfolio)
+      - name: End-to-end tests (portfolio)
         run: npm run test:e2e
 
       - name: Upload the Playwright report
