@@ -26,11 +26,21 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
+  test('PSI Planning Grid is listed and its page loads the planner', async ({ page }) => {
+    await page.goto('/');
+    const section = page.locator('#psi-planner');
+    await expect(section.locator('h3')).toHaveText('PSI Planning Grid');
+    await section.getByRole('link', { name: 'Open the planner' }).click();
+    await expect(page).toHaveURL(/\/psi-planner\/$/);
+    await expect(page.locator('h1')).toHaveText('PSI Planning Grid');
+    await expect(page.locator('#psi tbody tr').first()).toBeVisible();
+  });
+
   test('every project has a shareable link with a copy button', async ({ page, context }) => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
     await page.goto('/');
     const buttons = page.locator('.share-row [data-share-url]');
-    await expect(buttons).toHaveCount(5);
+    await expect(buttons).toHaveCount(6);
     for (const url of await buttons.evaluateAll(els => els.map(e => e.dataset.shareUrl))) {
       expect(url).toMatch(/^https:\/\//);
     }

@@ -1,0 +1,25 @@
+/* Account area, demo banner and sign-in dialog. Uses the page's colour tokens. */
+.account{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0}
+.acct-chip{font:600 12px var(--f-ui);padding:5px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--muted)}
+.acct-email{font:500 13px var(--f-ui);color:var(--muted);max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-status{font:600 12px var(--f-ui);padding:4px 9px;border-radius:999px;background:var(--ok-soft);color:var(--ok)}
+.acct-status.st-pending,.acct-status.st-saving,.acct-status.st-loading{background:var(--accent-soft);color:var(--accent)}
+.acct-status.st-error,.acct-status.st-conflict{background:var(--bad-soft);color:var(--bad)}
+.demo-bar{font-size:13px;padding:9px 14px;border-radius:7px;background:var(--accent-soft);color:var(--fg);border:1px solid var(--line)}
+.demo-bar.warn{background:var(--warn-soft)}
+.linkish{font:inherit;font-weight:600;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+dialog.auth{border:1px solid var(--line-strong);border-radius:10px;padding:0;background:var(--surface);color:var(--fg);width:min(420px,calc(100vw - 32px));box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+dialog.auth::backdrop{background:rgba(10,14,22,.55)}
+.auth-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.auth-h h2{font-size:16px;margin:0}
+.auth-close{font:600 18px var(--f-ui);background:none;border:0;color:var(--muted);cursor:pointer;padding:2px 6px;border-radius:5px}
+.auth form{display:grid;gap:12px;padding:16px 18px 18px}
+.auth .field input{width:100%;font:500 14px var(--f-ui);padding:8px 10px;border:1px solid var(--line-strong);border-radius:6px;background:var(--input-bg);color:var(--fg)}
+.auth .btn{width:100%;padding:9px 12px}
+.auth .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.auth-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.auth-or{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.auth-or::before,.auth-or::after{content:"";flex:1;border-top:1px solid var(--line)}
+.auth-msg{font-size:13px;margin:0;min-height:0}
+.auth-msg.err{color:var(--bad)} .auth-msg.ok{color:var(--ok)}
+.auth-fine{font-size:12px;color:var(--muted);margin:0}
