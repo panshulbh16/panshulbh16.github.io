@@ -20,6 +20,15 @@
 
   let sb = null, hooks = null, timer = null, lastUpdated = null, saving = false, pending = false, loaded = false;
   let status = { kind: 'demo', text: '' };
+  // supabase-js 2.45 reports a PKCE password-reset redirect as SIGNED_IN, not PASSWORD_RECOVERY.
+  // It marks the stored code verifier with /PASSWORD_RECOVERY, so read that before the client consumes it.
+  let recoverPending = (() => {
+    try {
+      const ref = new URL(cfg.supabaseUrl).hostname.split('.')[0];
+      const v = JSON.parse(localStorage.getItem(`sb-${ref}-auth-token-code-verifier`) || 'null');
+      return new URLSearchParams(location.search).has('code') && typeof v === 'string' && v.endsWith('/PASSWORD_RECOVERY');
+    } catch (e) { return false; }
+  })();
   const $ = id => document.getElementById(id);
   const here = () => location.origin + location.pathname;
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -41,14 +50,15 @@
     const u = session && session.user ? session.user : null;
     const changed = (u ? u.id : null) !== (api.user ? api.user.id : null);
     api.user = u;
-    if (event === 'PASSWORD_RECOVERY') openDialog('reset');
+    const recovery = !!u && (event === 'PASSWORD_RECOVERY' || (recoverPending && event === 'SIGNED_IN'));
+    if (recovery) { recoverPending = false; openDialog('reset'); }
     if (!u) {
       clearTimeout(timer); timer = null;
       if (changed) { lastUpdated = null; loaded = false; hooks.signedOut(); }
       setStatus('demo');
     } else if (changed) {
       loaded = false;
-      closeDialog();
+      if (!recovery) closeDialog();
       await pull();
     }
     cleanUrl();
@@ -67,6 +77,7 @@
     if (data && valid(data.data)) {
       lastUpdated = data.updated_at;
       hooks.setState(data.data);
+      clearTimeout(timer); timer = null; // re-rendering the loaded plans is not an edit; don't write them back
       setStatus('saved');
       hooks.toast('Loaded your saved plans');
     } else {
@@ -167,7 +178,7 @@
           : '<button type="button" class="linkish" id="retrySave">Try again</button>');
       if ($('cfLoad')) $('cfLoad').addEventListener('click', () => pull());
       if ($('cfKeep')) $('cfKeep').addEventListener('click', () => push(true));
-      if ($('retrySave')) $('retrySave').addEventListener('click', () => push());
+      if ($('retrySave')) $('retrySave').addEventListener('click', () => (loaded ? push() : pull()));
     } else {
       bar.hidden = true;
       bar.className = 'demo-bar';
