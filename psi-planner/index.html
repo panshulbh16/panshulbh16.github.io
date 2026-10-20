@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="PSI Planning Grid: weekly and monthly production, sales and inventory planning with a live supply-planning solver.">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="cloud.css">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>PSI Planning Grid</title>
 <style>
@@ -195,6 +196,7 @@ textarea.csv{width:100%;min-height:120px;font:12px var(--f-num);background:var(-
       <p class="sub" id="horizonText">Production · Sales · Inventory projection</p>
     </div>
     <div class="actions">
+      <div class="account" id="account" aria-live="polite"></div>
       <div class="seg" role="group" aria-label="Planning buckets">
         <button type="button" id="vWeekly" data-view="weekly">Weekly</button>
         <button type="button" id="vMonthly" data-view="monthly">Monthly</button>
@@ -203,6 +205,8 @@ textarea.csv{width:100%;min-height:120px;font:12px var(--f-num);background:var(-
       <button class="btn" id="resetAll" type="button">Reset to sample data</button>
     </div>
   </header>
+
+  <p class="demo-bar" id="demoBar" role="status" hidden></p>
 
   <nav class="tabs" id="tabs" role="tablist" aria-label="Items"></nav>
 
@@ -326,6 +330,27 @@ textarea.csv{width:100%;min-height:120px;font:12px var(--f-num);background:var(-
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<dialog class="auth" id="authDlg" aria-labelledby="authTitle">
+  <div class="auth-h"><h2 id="authTitle">Sign in to save your plans</h2><button class="auth-close" type="button" id="authClose" aria-label="Close">×</button></div>
+  <form id="authForm" novalidate>
+    <button class="btn" type="button" id="authGoogle" hidden>Continue with Google</button>
+    <p class="auth-or" id="authOr" hidden>or</p>
+    <div class="field"><label for="authEmail">Email</label><input type="email" id="authEmail" autocomplete="email" maxlength="254" required></div>
+    <div class="field"><label for="authPw">Password</label><input type="password" id="authPw" autocomplete="current-password" minlength="8" maxlength="72"></div>
+    <p class="auth-msg" id="authMsg" role="alert"></p>
+    <button class="btn primary" type="submit" id="authSignIn">Sign in</button>
+    <div class="auth-row"><button class="btn" type="button" id="authSignUp">Create account</button><button class="btn" type="button" id="authMagic">Email me a link</button></div>
+    <p class="auth-fine"><button type="button" class="linkish" id="authForgot">Forgot password?</button> Your plans are private to your account.</p>
+  </form>
+  <form id="resetForm" novalidate hidden>
+    <div class="field"><label for="resetPw">New password</label><input type="password" id="resetPw" autocomplete="new-password" minlength="8" maxlength="72"></div>
+    <div class="field"><label for="resetPw2">Repeat new password</label><input type="password" id="resetPw2" autocomplete="new-password" minlength="8" maxlength="72"></div>
+    <button class="btn primary" type="submit">Save password</button>
+  </form>
+</dialog>
+<script src="config.js"></script>
+<script src="vendor/supabase.js"></script>
+<script src="cloud.js"></script>
 <script src="solver.js"></script>
 <script src="app.js"></script>
 

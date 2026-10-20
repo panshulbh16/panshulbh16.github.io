@@ -2,7 +2,7 @@
 const NF=new Intl.NumberFormat('en-IN',{maximumFractionDigits:2});
 const DF=new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',timeZone:'UTC'});
 const MF=new Intl.DateTimeFormat('en-US',{month:'short',timeZone:'UTC'});
-const fmt=n=>NF.format(Math.round(n*100)/100);
+const fmt=n=>NF.format(Math.round(n*100)/100+0);
 const num=v=>{if(typeof v==='number')return isFinite(v)?v:0;const x=parseFloat(String(v??'').replace(/[,\s]/g,''));return isFinite(x)?x:0};
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const rep=(n,v)=>Array.from({length:n},()=>v);
@@ -63,7 +63,7 @@ function solve(it,view){
   const dtfB=fence(P.dtf),ptfB=fence(P.ptf),rtfB=fence(P.rtf);
   const shrink=clamp(num(P.shrink)/100,0,.9),yld=clamp((num(P.yield)||100)/100,.01,1);
   const LT=Math.max(0,num(P.preLT))+Math.max(0,num(P.procLT))+Math.max(0,num(P.postLT));
-  const R=!!P.roundQty,up=v=>R?Math.ceil(v-1e-9):v,dn=v=>R?Math.floor(v+1e-9):v;
+  const R=!!P.roundQty,up=v=>R?Math.ceil(v-1e-9)+0:v,dn=v=>R?Math.floor(v+1e-9)+0:v;
   const fc=[],so=[],dem=[],firm=[];
   for(let i=0;i<n;i++){
     const f=num(D.fc[i]),o=num(D.so[i]);
@@ -133,7 +133,7 @@ function solve(it,view){
     st.push(e<-1e-9?'out':e<ss[i]-1e-9?'low':(xs>0&&doc[i]>xs)?'excess':'ok');
     util.push(cap?(cap[i]>0?(firm[i]+r.plan[i])/cap[i]:(firm[i]+r.plan[i]>0?Infinity:0)):null);
   }
-  return{B,n,dtfB,ptfB,rtfB,LT,z,sigma,yld,fc,so,dem,firm,ss,cap,rel,orders,doc,st,util,gap,boh:r.boh,plan:r.plan,eoh:r.eoh,reason:r.reason};
+  return{B,n,dtfB,ptfB,rtfB,LT,z,sigma,yld,fc,so,dem,firm,ss,cap,rel,orders,doc,st,util:cap?util:null,gap,boh:r.boh,plan:r.plan,eoh:r.eoh,reason:r.reason};
 }
 const worst=st=>st.includes('out')?'out':st.includes('low')?'low':st.includes('excess')?'excess':'ok';
 

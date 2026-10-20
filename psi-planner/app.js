@@ -22,7 +22,8 @@ function normalize(){
   }
 }
 normalize();
-let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},250)}
+let saveT;function save(){if(window.PSICloud&&PSICloud.user){PSICloud.schedule();return}clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},250)}
+function loadLocal(){let d=null;try{const raw=localStorage.getItem(KEY);if(raw)d=JSON.parse(raw)}catch(e){}return d&&Array.isArray(d.items)&&d.items.length?d:sample()}
 const cur=()=>S.items[S.active];
 const data=(it=cur())=>it[VK[S.view]];
 
@@ -243,3 +244,10 @@ $('copyCsv').addEventListener('click',()=>{
 let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200)}
 
 renderAll();
+if(location.hash==='#how'){const h=document.getElementById('how');if(h){h.open=true;h.scrollIntoView()}}
+if(window.PSICloud)PSICloud.init({
+  getState:()=>S,
+  setState:d=>{const v=S.view;S=d;if(!VK[S.view])S.view=v;normalize();renderAll()},
+  signedOut:()=>{S=loadLocal();normalize();renderAll();toast('Signed out. Showing demo data.')},
+  toast
+});
