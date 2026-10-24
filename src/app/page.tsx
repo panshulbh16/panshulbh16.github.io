@@ -97,15 +97,15 @@ function Hero() {
           style={delay(260)}
         >
           <p>
-            I build on Oracle Cloud for a living: I&apos;m a technology consultant in{" "}
+            I help companies across the US and Canada run their sales and service on Oracle Cloud. I&apos;m a
+            technology consultant in{" "}
             <ExtLink href="https://www.deloitte.com/" className={inlineLink}>
               Deloitte
             </ExtLink>
-            &apos;s Oracle CX practice, designing Redwood systems for companies in the US and Canada, after
-            almost four years as a software engineer at SoftClouds.
+            &apos;s Oracle CX practice, building on Redwood. Before that, I was a software engineer at SoftClouds.
           </p>
           <p className="mt-4">
-            Outside work I build my own products end to end.{" "}
+            After hours, I take my own ideas from first sketch to production.{" "}
             <ExtLink href="https://heyduely.com/" className={inlineLink}>
               Duely
             </ExtLink>
