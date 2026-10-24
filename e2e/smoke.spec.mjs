@@ -26,7 +26,7 @@ test.describe('smoke @smoke', () => {
     expect(href === '/page-destroyer/page-destroyer.zip' || href.startsWith('https://chromewebstore.google.com/')).toBe(true);
     if (!href.startsWith('https://')) expect((await request.get(href)).ok()).toBe(true);
 
-    await page.locator('[data-destroy-here]').click();
+    await page.getByRole('button', { name: 'Smash this page' }).click();
     await expect(page.locator('[data-page-destroyer]')).toHaveCount(1);
     await page.keyboard.press('Escape');
     await expect(page.locator('[data-page-destroyer]')).toHaveCount(0);

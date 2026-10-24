@@ -122,7 +122,7 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
-        {/* Page Destroyer's install link and "Smash this page" button (shared with /page-destroyer/). */}
+        {/* Page Destroyer's install link (shared with /page-destroyer/). */}
         <Script src="/page-destroyer/store.js" type="module" strategy="lazyOnload" />
       </body>
     </html>

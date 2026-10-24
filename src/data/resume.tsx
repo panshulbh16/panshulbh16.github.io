@@ -149,7 +149,7 @@ export const DATA = {
         "Stuck on a slow portal or a ticket that won't move? Click the icon and smash the page with a hammer, a gun, a chainsaw or fire. Nothing is saved and nothing leaves your browser.",
       technologies: ["Chrome extension", "Canvas", "Web Audio"],
       // chrome: page-destroyer/store.js swaps this to the Web Store link once STORE_URL is set.
-      // destroy: store.js loads the destroyer onto this page.
+      // destroy: loads the destroyer onto this page.
       links: [
         { type: "Download for Chrome", href: "/page-destroyer/page-destroyer.zip", icon: "download", chrome: true },
         { type: "Smash this page", href: "", icon: "hammer", destroy: true },

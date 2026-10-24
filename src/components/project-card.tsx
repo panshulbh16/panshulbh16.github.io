@@ -44,6 +44,15 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+// Same as wireDestroyButtons() in public/page-destroyer/store.js, but wired by React so an
+// early click works without waiting for store.js to load.
+function smashThisPage() {
+  const s = document.createElement("script");
+  s.src = "/page-destroyer/destroyer.js";
+  s.onload = s.onerror = () => s.remove();
+  document.body.appendChild(s);
+}
+
 function LinkBadge({ link }: { link: CardLink }) {
   const Icon = LINK_ICONS[link.icon];
   const content = (
@@ -56,14 +65,16 @@ function LinkBadge({ link }: { link: CardLink }) {
     </Badge>
   );
 
-  // Wired up by /page-destroyer/store.js, which this page loads.
+  // No data-destroy-here here: store.js would add a second listener and the second
+  // script load toggles the destroyer straight back off.
   if (link.destroy) {
     return (
-      <button type="button" data-destroy-here className="cursor-pointer">
+      <button type="button" onClick={smashThisPage} className="cursor-pointer">
         {content}
       </button>
     );
   }
+  // store.js swaps this to the Chrome Web Store link once STORE_URL is set.
   if (link.chrome) {
     return (
       <a href={link.href} download="page-destroyer.zip" data-chrome-link>
