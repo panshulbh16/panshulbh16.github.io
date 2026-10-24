@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { pickActiveSection } from "../assets/scroll-spy.js";
+import { pickActiveSection } from "../public/assets/scroll-spy.js";
 
 const sections = [
   { id: "about", top: 72 },

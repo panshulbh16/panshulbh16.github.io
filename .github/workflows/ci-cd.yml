@@ -32,6 +32,9 @@ jobs:
       - name: Portfolio unit tests
         run: npm run test:unit
 
+      - name: Build the static site
+        run: npm run build
+
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
 
@@ -67,15 +70,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - name: Collect the public files
-        run: node scripts/assemble-site.mjs
+      - run: npm ci
+
+      - name: Build the static site
+        run: npm run build
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: out
 
       - name: Deploy
         id: deployment

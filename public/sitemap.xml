@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://panshulbh16.github.io/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/duely.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/roamly.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/tailor.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/opportunity-hunter.png</image:loc></image:image>
-    <image:image><image:loc>https://panshulbh16.github.io/assets/img/og.png</image:loc></image:image>
+    <image:image><image:loc>https://panshulbh16.github.io/og.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://panshulbh16.github.io/page-destroyer/</loc>
