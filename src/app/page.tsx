@@ -276,7 +276,7 @@ function ExperienceSection() {
   return (
     <section id="experience" className="bg-muted/40 py-24">
       <div className="mx-auto max-w-3xl px-5">
-        <SectionHeading title="Experience" subtitle="Oracle Cloud consulting, and products of my own" />
+        <SectionHeading title="Experience" subtitle="Building on Oracle Cloud since 2021" />
         <ol className="relative space-y-8 before:absolute before:top-2 before:bottom-2 before:left-[5px] before:w-px before:bg-border sm:before:left-[7px]">
           {EXPERIENCE.map((item) => (
             <li key={item.org} className="reveal relative pl-7 sm:pl-10">

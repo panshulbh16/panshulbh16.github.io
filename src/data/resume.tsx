@@ -77,32 +77,6 @@ export const EXPERIENCE: Experience[] = [
     tech: ["Oracle Fusion Cloud", "Redwood", "Sales Cloud", "Service Cloud", "VBCS", "System design"],
   },
   {
-    org: "Independent",
-    mark: { letter: "P", bg: "linear-gradient(135deg, #e0631f, #9a3412)", fg: "#ffffff" },
-    badges: [{ label: "4 live products", tone: "brand" }, { label: "Side projects" }],
-    meta: "Sep 2026 – Present",
-    place: "Bengaluru",
-    summary:
-      "Products I design, build and run on my own, from the database schema to the copy on the buttons.",
-    roles: [
-      {
-        title: "Product engineer",
-        dates: "Sep 2026 – Present",
-        bullets: [
-          "Shipped four full-stack TypeScript products to production: web, plus iOS and Android for Duely.",
-          "Kept AI costs bounded: per-user and monthly budgets charged on every attempt, failing closed when unconfigured.",
-          "Built payments with Razorpay that still grant access when the checkout tab closes, and scores that explain themselves.",
-        ],
-      },
-    ],
-    links: [
-      { label: "heyduely.com", href: "https://heyduely.com/" },
-      { label: "heyroamly.com", href: "https://heyroamly.com/" },
-      { label: "opportunityhunter.xyz", href: "https://opportunityhunter.xyz/" },
-    ],
-    tech: ["TypeScript", "Next.js", "React Native", "Cloudflare Workers", "D1", "Claude API", "Razorpay"],
-  },
-  {
     org: "SoftClouds",
     href: "https://www.softclouds.com/",
     mark: { letter: "S", bg: "#1D4ED8", fg: "#ffffff" },
