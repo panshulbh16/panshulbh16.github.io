@@ -7,16 +7,17 @@ test.describe('smoke @smoke', () => {
   test('profile shows who I am, where I work and what I built', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('Panshul Bharadwaj');
-    for (const heading of ['About', 'Work Experience', 'Education', 'Skills', 'Get in touch']) {
+    for (const heading of ['Experience', 'Skills', 'Projects', "Let's build something"]) {
       await expect(page.getByRole('heading', { name: heading })).toBeVisible();
     }
-    await expect(page.locator('#work')).toContainText('Deloitte USI');
-    await expect(page.locator('#work')).toContainText('SoftClouds');
+    await expect(page.locator('#experience')).toContainText('Deloitte USI');
+    await expect(page.locator('#experience')).toContainText('SoftClouds');
+    await expect(page.locator('#experience')).toContainText('MS Ramaiah University of Applied Sciences');
     await expect(page.locator('#projects h3')).toHaveText(PROJECTS);
 
-    // Work entries open to show what the job was.
-    await page.locator('#work').getByText('Deloitte USI').click();
-    await expect(page.locator('#work')).toContainText('Oracle Cloud Redwood');
+    // Skills filter narrows the grid.
+    await page.getByRole('button', { name: 'Oracle', exact: true }).click();
+    await expect(page.locator('#skills li')).toHaveCount(4);
   });
 
   test('Page Destroyer has a working install link, its own page and a privacy policy', async ({ page, request }) => {
