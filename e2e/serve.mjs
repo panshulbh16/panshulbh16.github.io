@@ -1,15 +1,15 @@
-// Minimal static server for the site root, used by Playwright locally and in CI.
+// Minimal static server for the built site (out/, from `npm run build`), used by Playwright locally and in CI.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'out');
 const port = Number(process.env.PORT || 4173);
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript',
   '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp',
-  '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain',
+  '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain', '.zip': 'application/zip',
 };
 
 createServer(async (req, res) => {
