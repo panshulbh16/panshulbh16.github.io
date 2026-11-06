@@ -5,7 +5,7 @@ import { Hammer } from "lucide-react";
 // Same as wireDestroyButtons() in public/page-destroyer/store.js, but wired by React so an
 // early click works without waiting for store.js. No data-destroy-here: store.js would add a
 // second listener, and loading the script twice toggles the destroyer straight back off.
-function smashThisPage() {
+export function smashThisPage() {
   const s = document.createElement("script");
   s.src = "/page-destroyer/destroyer.js";
   s.onload = s.onerror = () => s.remove();

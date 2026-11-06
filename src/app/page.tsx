@@ -46,27 +46,37 @@ function Section({ id, title, children }: { id: string; title?: string; children
   );
 }
 
+// Photo beside the text when PROFILE.avatarUrl is set; until then the text stands alone (no monogram box).
 function About() {
+  const words = (
+    <ScrollWords
+      paragraphs={ABOUT}
+      className="max-w-3xl text-[22px] leading-[1.45] font-semibold tracking-[-0.02em] sm:text-[28px]"
+    />
+  );
   return (
     <Section id="about">
-      <div className="reveal mt-8 inline-block">
-        <div className="relative grid size-56 place-items-center overflow-hidden rounded-[28px] border border-line bg-panel sm:size-64">
-          <div aria-hidden className="aurora absolute inset-0 opacity-80" />
-          {PROFILE.avatarUrl ? (
-            <img src={PROFILE.avatarUrl} alt={PROFILE.name} className="relative size-full object-cover" />
-          ) : (
-            <span className="text-gradient relative text-[88px] font-semibold tracking-[-0.06em]">{PROFILE.initials}</span>
-          )}
-          <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-canvas/75 px-2.5 py-1 text-xs text-ink backdrop-blur">
-            <MapPin className="size-3 text-accent" aria-hidden />
-            {PROFILE.location}
-          </span>
+      {PROFILE.avatarUrl ? (
+        <div className="mt-8 grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16">
+          <figure className="reveal relative w-full max-w-[260px] self-start overflow-hidden rounded-[28px] bg-panel">
+            <img
+              src={PROFILE.avatarUrl}
+              alt={`Portrait of ${PROFILE.name}`}
+              width={520}
+              height={520}
+              loading="lazy"
+              className="aspect-square w-full object-cover object-[50%_30%]"
+            />
+            <figcaption className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-md">
+              <MapPin className="size-3 text-[#30d158]" aria-hidden />
+              {PROFILE.location}
+            </figcaption>
+          </figure>
+          {words}
         </div>
-      </div>
-      <ScrollWords
-        paragraphs={ABOUT}
-        className="mt-12 max-w-3xl text-[22px] leading-[1.45] font-semibold tracking-[-0.02em] sm:text-[28px]"
-      />
+      ) : (
+        <div className="mt-8">{words}</div>
+      )}
     </Section>
   );
 }

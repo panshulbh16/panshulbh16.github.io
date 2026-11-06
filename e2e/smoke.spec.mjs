@@ -42,6 +42,29 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
+  test('hero terminal types its intro, then takes commands', async ({ page }) => {
+    await page.goto('/');
+    const input = page.getByLabel('Terminal command. Type help to see what it can do.');
+    await expect(input).toBeVisible({ timeout: 10_000 });
+    const log = page.getByRole('log', { name: 'Terminal output' });
+
+    await input.fill('help');
+    await input.press('Enter');
+    await expect(log).toContainText('jump to a section');
+
+    await input.fill('whoami');
+    await input.press('Enter');
+    await expect(log).toContainText('Panshul Bharadwaj, Technology Consultant');
+
+    await input.fill('nope');
+    await input.press('Enter');
+    await expect(log).toContainText('command not found: nope');
+
+    await input.fill('work');
+    await input.press('Enter');
+    await expect(page).toHaveURL(/#work$/);
+  });
+
   test('theme toggle switches between light and dark', async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' });
     await page.goto('/');
