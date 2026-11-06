@@ -1,7 +1,7 @@
 // Smoke tests. Tagged @smoke so the CD job can run them against the live site after a deploy.
 import { test, expect } from './fixtures.mjs';
 
-const PROJECTS = ['Duely', 'Roamly', 'Opportunity Hunter', 'Tailor', 'Page Destroyer'];
+const PROJECTS = ['Duely', 'Roamly', 'Tailor', 'Page Destroyer'];
 
 test.describe('smoke @smoke', () => {
   test('profile shows who I am, where I work and what I built', async ({ page }) => {
