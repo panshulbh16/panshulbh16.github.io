@@ -129,9 +129,8 @@ export function Hero() {
           <p className="rise mt-6 max-w-2xl text-[17px] leading-[1.75] text-pretty sm:text-xl" style={delay(240)}>
             I build sales and service systems on <b className="font-medium text-ink">Oracle Cloud</b> at{" "}
             <b className="font-medium text-ink">Deloitte</b>, and after hours I ship my own products:{" "}
-            <b className="font-medium text-ink">Duely</b>, <b className="font-medium text-ink">Roamly</b>,{" "}
-            <b className="font-medium text-ink">Tailor</b> and <b className="font-medium text-ink">Opportunity Hunter</b>
-            , all live.
+            <b className="font-medium text-ink">Duely</b>, <b className="font-medium text-ink">Roamly</b> and{" "}
+            <b className="font-medium text-ink">Tailor</b>, all live.
           </p>
           <div className="rise mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={delay(320)}>
             <a

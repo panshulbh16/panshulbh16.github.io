@@ -19,7 +19,7 @@ A personal profile site for Panshul Bharadwaj, a technology consultant in Bengal
 
 ## Positioning
 
-Two tracks at once: enterprise Oracle Cloud work by day (SoftClouds, then Deloitte USI) and four live products of his own built end to end, with the unglamorous engineering done properly (explainable scores, server-enforced quotas, fail-closed AI budgets, webhook-safe payments).
+Two tracks at once: enterprise Oracle Cloud work by day (SoftClouds, then Deloitte USI) and three live products of his own built end to end, with the unglamorous engineering done properly (explainable scores, server-enforced quotas, fail-closed AI budgets, webhook-safe payments).
 
 ## Capabilities and Constraints
 
@@ -31,7 +31,7 @@ Two tracks at once: enterprise Oracle Cloud work by day (SoftClouds, then Deloit
 
 - Work: Deloitte USI, Technology Consultant, Oracle CX practice, Aug 2025 – present; SoftClouds, Software Engineer, Oct 2021 – May 2025 (owner confirmed).
 - Education: MS Ramaiah University of Applied Sciences (degree and years unknown; do not invent).
-- Products, all live: Duely (heyduely.com, web + iOS + Android), Roamly (heyroamly.com), Tailor (Railway URL), Opportunity Hunter (opportunityhunter.xyz); plus Page Destroyer, a Chrome extension. Screenshots in `public/assets/img/`.
+- Products, all live: Duely (heyduely.com, web + iOS + Android), Roamly (heyroamly.com), Tailor (Railway URL); plus Page Destroyer, a Chrome extension. Screenshots in `public/assets/img/`.
 - No photo of the owner yet; no testimonials, client names, metrics or user counts. Never fabricate any of these.
 
 ## Product Principles

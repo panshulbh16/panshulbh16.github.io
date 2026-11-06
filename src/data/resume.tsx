@@ -41,7 +41,7 @@ export const PROFILE = {
 };
 
 // Badge above the name. Deliberately not an availability signal.
-export const HERO_BADGE = { status: "5 products live", tags: "Oracle Cloud · Full-stack · AI" };
+export const HERO_BADGE = { status: "4 products live", tags: "Oracle Cloud · Full-stack · AI" };
 
 // Output of `describe engineer panshul` in the hero terminal. [key, value, accent?]
 export const TERMINAL: [string, string, boolean?][] = [
@@ -50,7 +50,7 @@ export const TERMINAL: [string, string, boolean?][] = [
   ["Practice", "Oracle CX · Redwood · Sales & Service Cloud"],
   ["Building on", "Oracle Cloud since 2021"],
   ["After hours", "Next.js · Cloudflare Workers · Claude"],
-  ["Shipped", "Duely · Roamly · Tailor · Opportunity Hunter"],
+  ["Shipped", "Duely · Roamly · Tailor · Page Destroyer"],
   ["Location", "Bengaluru, India"],
   ["Status", "Shipping", true],
 ];
@@ -59,7 +59,7 @@ export const TERMINAL: [string, string, boolean?][] = [
 export const ABOUT = [
   "I'm a technology consultant in Deloitte's Oracle CX practice, where I design and build sales and service systems on Oracle Cloud Redwood for companies in the US and Canada.",
   "Before Deloitte I spent three and a half years at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for international clients.",
-  "After hours I take my own ideas from first sketch to production: four web products and a Chrome extension, each designed, built, deployed and run by me.",
+  "After hours I take my own ideas from first sketch to production: three web products and a Chrome extension, each designed, built, deployed and run by me.",
 ];
 
 export type Link = { label: string; href: string };
@@ -226,20 +226,6 @@ export const PROJECTS: Project[] = [
     tech: ["Next.js", "Cloudflare Workers", "D1", "Drizzle", "Claude", "Razorpay"],
     image: "/assets/img/roamly-800.webp",
     imageAlt: "Roamly trip planner: Where to next, with a Dolomites photo above the trip form",
-  },
-  {
-    title: "Opportunity Hunter",
-    href: "https://opportunityhunter.xyz/",
-    source: "https://github.com/panshulbh16/opportunity-hunter",
-    category: "Careers · AI",
-    dates: "Sep 2026",
-    stat: { value: "0–100", label: "match score, with the reason beside it" },
-    description:
-      "A job-matching agent: describe the role once and it keeps searching licensed listings on a schedule, scores each one with an explanation, and tracks what you apply to.",
-    steps: ["Search profile", "Fetch licensed listings", "Remove duplicates", "Score and explain", "Daily digest"],
-    tech: ["Next.js", "SQLite", "Voyage embeddings", "Razorpay"],
-    image: "/assets/img/opportunity-hunter-800.webp",
-    imageAlt: "Opportunity Hunter landing page above a match card for a backend role",
   },
   {
     title: "Tailor",
