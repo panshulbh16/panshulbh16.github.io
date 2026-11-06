@@ -58,7 +58,7 @@ export const TERMINAL: [string, string, boolean?][] = [
 // ~/about, revealed word by word on scroll. The first paragraph stays fully lit.
 export const ABOUT = [
   "I'm a technology consultant in Deloitte's Oracle CX practice, where I design and build sales and service systems on Oracle Cloud Redwood for companies in the US and Canada.",
-  "Before Deloitte I spent three and a half years at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for international clients.",
+  "Before Deloitte I spent three and a half years at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for global clients.",
   "After hours I take my own ideas from first sketch to production: three web products and a Chrome extension, each designed, built, deployed and run by me.",
 ];
 
@@ -113,7 +113,7 @@ export const EXPERIENCE: Experience[] = [
         bullets: [
           {
             lead: "Built and extended Oracle Sales Cloud and Service Cloud implementations",
-            rest: " for international clients.",
+            rest: " for global clients.",
           },
           {
             lead: "Developed custom application extensions and UIs on Visual Builder (VBCS)",
