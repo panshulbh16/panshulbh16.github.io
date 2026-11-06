@@ -1,4 +1,5 @@
 // Everything on the page comes from this file. Edit here, not in the components.
+// Rule for this file: every fact must be true and checkable. No invented numbers.
 import {
   siClaude,
   siCloudflare,
@@ -26,10 +27,11 @@ import {
 export const PROFILE = {
   name: "Panshul Bharadwaj",
   initials: "PB",
+  handle: "panshul",
   url: "https://panshulbh16.github.io",
   // Drop a square photo at public/me.jpg and set this to "/me.jpg". Until then the monogram shows.
   avatarUrl: "",
-  tagline: "Technology Consultant at Deloitte · Oracle Cloud by day, my own products by night",
+  role: "Technology Consultant & Product Engineer",
   description:
     "Technology consultant at Deloitte, building on Oracle Cloud. Outside work I design, build and run my own software products.",
   location: "Bengaluru, India",
@@ -38,19 +40,37 @@ export const PROFILE = {
   linkedin: "https://www.linkedin.com/in/panshul-bharadwaj",
 };
 
+// Badge above the name. Deliberately not an availability signal.
+export const HERO_BADGE = { status: "5 products live", tags: "Oracle Cloud · Full-stack · AI" };
+
+// Output of `describe engineer panshul` in the hero terminal. [key, value, accent?]
+export const TERMINAL: [string, string, boolean?][] = [
+  ["Name", "Panshul Bharadwaj"],
+  ["Role", "Technology Consultant, Deloitte USI"],
+  ["Practice", "Oracle CX · Redwood · Sales & Service Cloud"],
+  ["Building on", "Oracle Cloud since 2021"],
+  ["After hours", "Next.js · Cloudflare Workers · Claude"],
+  ["Shipped", "Duely · Roamly · Tailor · Opportunity Hunter"],
+  ["Location", "Bengaluru, India"],
+  ["Status", "Shipping", true],
+];
+
+// ~/about, revealed word by word on scroll. The first paragraph stays fully lit.
+export const ABOUT = [
+  "I'm a technology consultant in Deloitte's Oracle CX practice, where I design and build sales and service systems on Oracle Cloud Redwood for companies in the US and Canada.",
+  "Before Deloitte I spent three and a half years at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for international clients.",
+  "After hours I take my own ideas from first sketch to production: four web products and a Chrome extension, each designed, built, deployed and run by me.",
+];
+
 export type Link = { label: string; href: string };
 
 export type Experience = {
   org: string;
   href?: string;
-  // Monogram tile instead of a logo file: a letter on the org's own colour.
-  mark: { letter: string; bg: string; fg: string; dot?: string };
-  badges: { label: string; tone?: "brand" | "plain" }[];
-  meta: string;
+  unit?: string;
+  dates: string;
   place?: string;
-  summary?: string;
-  roles: { title: string; badge?: string; dates: string; bullets: string[] }[];
-  links?: Link[];
+  roles: { title: string; bullets: { lead: string; rest: string }[] }[];
   tech: string[];
 };
 
@@ -58,19 +78,25 @@ export const EXPERIENCE: Experience[] = [
   {
     org: "Deloitte USI",
     href: "https://www.deloitte.com/",
-    mark: { letter: "D", bg: "#000000", fg: "#ffffff", dot: "#86BC25" },
-    badges: [{ label: "Oracle CX practice", tone: "brand" }, { label: "Current" }],
-    meta: "Aug 2025 – Present",
+    unit: "Oracle CX practice",
+    dates: "Aug 2025 – Present",
     place: "India",
     roles: [
       {
         title: "Technology Consultant",
-        badge: "Latest",
-        dates: "Aug 2025 – Present",
         bullets: [
-          "Design and build enterprise systems on Oracle Cloud Redwood (Sales & Service) for companies in the US and Canada.",
-          "Build custom application extensions and configuration fitted to each client's sales and service processes.",
-          "Work with client stakeholders to turn business and compliance requirements into system designs that stay maintainable.",
+          {
+            lead: "Design and build enterprise systems on Oracle Cloud Redwood",
+            rest: " (Sales & Service) for companies in the US and Canada.",
+          },
+          {
+            lead: "Build custom application extensions and configuration",
+            rest: " fitted to each client's sales and service processes.",
+          },
+          {
+            lead: "Turn business and compliance requirements into system designs",
+            rest: " that stay maintainable, working directly with client stakeholders.",
+          },
         ],
       },
     ],
@@ -79,64 +105,81 @@ export const EXPERIENCE: Experience[] = [
   {
     org: "SoftClouds",
     href: "https://www.softclouds.com/",
-    mark: { letter: "S", bg: "#1D4ED8", fg: "#ffffff" },
-    badges: [],
-    meta: "Oct 2021 – May 2025",
+    dates: "Oct 2021 – May 2025",
     place: "India",
     roles: [
       {
         title: "Software Engineer",
-        dates: "Oct 2021 – May 2025",
         bullets: [
-          "Built and extended Oracle Sales Cloud and Oracle Service Cloud implementations for international clients.",
-          "Developed custom application extensions and UIs on Oracle Visual Builder (VBCS), groundwork for the Redwood work that followed.",
+          {
+            lead: "Built and extended Oracle Sales Cloud and Service Cloud implementations",
+            rest: " for international clients.",
+          },
+          {
+            lead: "Developed custom application extensions and UIs on Visual Builder (VBCS)",
+            rest: ", groundwork for the Redwood work that followed.",
+          },
         ],
       },
     ],
     tech: ["Oracle Sales Cloud", "Oracle Service Cloud", "VBCS", "JavaScript"],
   },
-  {
-    org: "MS Ramaiah University of Applied Sciences",
-    href: "https://www.msruas.ac.in/",
-    mark: { letter: "R", bg: "#7F1D1D", fg: "#ffffff" },
-    badges: [{ label: "Education" }],
-    meta: "University",
-    place: "Bengaluru",
-    roles: [],
-    tech: [],
-  },
 ];
 
-export type Skill = { name: string; group: SkillGroup; icon?: SimpleIcon; oracle?: true };
-export const SKILL_GROUPS = ["Languages", "Frameworks", "Cloud & Data", "Oracle", "Tools"] as const;
-export type SkillGroup = (typeof SKILL_GROUPS)[number];
+export const EDUCATION = {
+  name: "MS Ramaiah University of Applied Sciences",
+  href: "https://www.msruas.ac.in/",
+  place: "Bengaluru",
+};
 
-export const SKILLS: Skill[] = [
-  { name: "TypeScript", group: "Languages", icon: siTypescript },
-  { name: "JavaScript", group: "Languages", icon: siJavascript },
-  { name: "Python", group: "Languages", icon: siPython },
-  { name: "React", group: "Frameworks", icon: siReact },
-  { name: "Next.js", group: "Frameworks", icon: siNextdotjs },
-  { name: "React Native", group: "Frameworks", icon: siReact },
-  { name: "Expo", group: "Frameworks", icon: siExpo },
-  { name: "Node.js", group: "Frameworks", icon: siNodedotjs },
-  { name: "Hono", group: "Frameworks", icon: siHono },
-  { name: "Tailwind CSS", group: "Frameworks", icon: siTailwindcss },
-  { name: "Cloudflare Workers", group: "Cloud & Data", icon: siCloudflareworkers },
-  { name: "Cloudflare D1", group: "Cloud & Data", icon: siCloudflare },
-  { name: "SQLite", group: "Cloud & Data", icon: siSqlite },
-  { name: "PostgreSQL", group: "Cloud & Data", icon: siPostgresql },
-  { name: "Drizzle", group: "Cloud & Data", icon: siDrizzle },
-  { name: "Claude API", group: "Cloud & Data", icon: siClaude },
-  { name: "Oracle Fusion Cloud", group: "Oracle", oracle: true },
-  { name: "Sales & Service Cloud", group: "Oracle", oracle: true },
-  { name: "Redwood", group: "Oracle", oracle: true },
-  { name: "Visual Builder (VBCS)", group: "Oracle", oracle: true },
-  { name: "Git", group: "Tools", icon: siGit },
-  { name: "GitHub Actions", group: "Tools", icon: siGithubactions },
-  { name: "Vitest", group: "Tools", icon: siVitest },
-  { name: "Razorpay", group: "Tools", icon: siRazorpay },
-  { name: "Resend", group: "Tools", icon: siResend },
+export type Skill = { name: string; icon?: SimpleIcon; oracle?: true };
+export type SkillGroup = { title: string; icon: "code" | "layers" | "cloud" | "oracle" | "wrench"; skills: Skill[] };
+
+const S = {
+  ts: { name: "TypeScript", icon: siTypescript },
+  js: { name: "JavaScript", icon: siJavascript },
+  py: { name: "Python", icon: siPython },
+  react: { name: "React", icon: siReact },
+  next: { name: "Next.js", icon: siNextdotjs },
+  rn: { name: "React Native", icon: siReact },
+  expo: { name: "Expo", icon: siExpo },
+  node: { name: "Node.js", icon: siNodedotjs },
+  hono: { name: "Hono", icon: siHono },
+  tw: { name: "Tailwind CSS", icon: siTailwindcss },
+  cfw: { name: "Cloudflare Workers", icon: siCloudflareworkers },
+  d1: { name: "Cloudflare D1", icon: siCloudflare },
+  sqlite: { name: "SQLite", icon: siSqlite },
+  pg: { name: "PostgreSQL", icon: siPostgresql },
+  drizzle: { name: "Drizzle", icon: siDrizzle },
+  claude: { name: "Claude API", icon: siClaude },
+  git: { name: "Git", icon: siGit },
+  gha: { name: "GitHub Actions", icon: siGithubactions },
+  vitest: { name: "Vitest", icon: siVitest },
+  razorpay: { name: "Razorpay", icon: siRazorpay },
+  resend: { name: "Resend", icon: siResend },
+} satisfies Record<string, Skill>;
+
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: "Oracle Cloud",
+    icon: "oracle",
+    skills: [
+      { name: "Oracle Fusion Cloud", oracle: true },
+      { name: "Sales & Service Cloud", oracle: true },
+      { name: "Redwood", oracle: true },
+      { name: "Visual Builder (VBCS)", oracle: true },
+    ],
+  },
+  { title: "Languages", icon: "code", skills: [S.ts, S.js, S.py] },
+  { title: "Frameworks", icon: "layers", skills: [S.react, S.next, S.rn, S.expo, S.node, S.hono, S.tw] },
+  { title: "Cloud & Data", icon: "cloud", skills: [S.cfw, S.d1, S.sqlite, S.pg, S.drizzle, S.claude] },
+  { title: "Tools", icon: "wrench", skills: [S.git, S.gha, S.vitest, S.razorpay, S.resend] },
+];
+
+// The two scrolling rows above the skill cards.
+export const MARQUEE: Skill[][] = [
+  [S.ts, S.react, S.next, S.cfw, S.claude, S.hono, S.d1, S.tw, S.expo, S.node],
+  [S.sqlite, S.pg, S.drizzle, S.razorpay, S.resend, S.gha, S.vitest, S.git, S.py, S.js],
 ];
 
 export type Project = {
@@ -145,7 +188,11 @@ export type Project = {
   source?: string;
   category: string;
   dates: string;
+  // The big gradient figure. Only facts the product itself states.
+  stat: { value: string; label: string };
   description: string;
+  // How it works, ticked off as the card scrolls into view.
+  steps: string[];
   tech: string[];
   image: string;
   imageAlt: string;
@@ -159,19 +206,23 @@ export const PROJECTS: Project[] = [
     href: "https://heyduely.com/",
     category: "Personal finance",
     dates: "Oct 2026 · web, iOS, Android",
+    stat: { value: "100+", label: "apps ready to pick, or forward a receipt" },
     description:
-      "Every subscription in one place, with what you pay a month and a year, and a reminder before each renewal or free trial turns into a charge. Subscriptions arrive as drafts from forwarded receipts, read-only Gmail or an App Store screenshot.",
+      "Every subscription in one place, with what you pay a month and a year, and a reminder before each renewal or free trial turns into a charge.",
+    steps: ["Forward a receipt or connect Gmail", "Claude drafts the subscription", "You confirm it", "Email before it renews"],
     tech: ["Cloudflare Workers", "Hono", "D1", "React", "Expo", "Claude"],
     image: "/assets/img/duely-800.webp",
-    imageAlt: "Duely dashboard: ₹7,911 a month across 10 active subscriptions, with upcoming renewals and spend by category",
+    imageAlt: "Duely dashboard: monthly subscription total with upcoming renewals and spend by category",
   },
   {
     title: "Roamly",
     href: "https://heyroamly.com/",
     category: "Travel · AI",
     dates: "Sep 2026",
+    stat: { value: "1 min", label: "from destination to a day-by-day plan" },
     description:
-      "An AI trip planner that turns a destination, dates, budget and pace into a day-by-day itinerary, then lets you publish the trip and invite people along.",
+      "An AI trip planner for road trips with friends: it paces the route, daily drive times and stops, then your group joins in. Or a day-by-day plan for any city.",
+    steps: ["Destination, dates and pace", "Route and stops planned", "Publish the trip", "Friends ask to join"],
     tech: ["Next.js", "Cloudflare Workers", "D1", "Drizzle", "Claude", "Razorpay"],
     image: "/assets/img/roamly-800.webp",
     imageAlt: "Roamly trip planner: Where to next, with a Dolomites photo above the trip form",
@@ -182,11 +233,13 @@ export const PROJECTS: Project[] = [
     source: "https://github.com/panshulbh16/opportunity-hunter",
     category: "Careers · AI",
     dates: "Sep 2026",
+    stat: { value: "0–100", label: "match score, with the reason beside it" },
     description:
-      "A job-matching agent: describe the role you want and it keeps searching licensed listings, scores each one 0–100 with a reason, and learns from what you save, apply to and reject.",
+      "A job-matching agent: describe the role once and it keeps searching licensed listings on a schedule, scores each one with an explanation, and tracks what you apply to.",
+    steps: ["Search profile", "Fetch licensed listings", "Remove duplicates", "Score and explain", "Daily digest"],
     tech: ["Next.js", "SQLite", "Voyage embeddings", "Razorpay"],
     image: "/assets/img/opportunity-hunter-800.webp",
-    imageAlt: "Opportunity Hunter landing page: Stop Searching. Start Getting Matched, above a 92% match card for a backend role",
+    imageAlt: "Opportunity Hunter landing page above a match card for a backend role",
   },
   {
     title: "Tailor",
@@ -194,30 +247,34 @@ export const PROJECTS: Project[] = [
     source: "https://github.com/panshulbh16/tailor",
     category: "Careers · AI",
     dates: "Sep 2026",
+    stat: { value: "0–100", label: "honest fit score, streamed in seconds" },
     description:
-      "Paste a résumé and a job description. Tailor returns an honest fit score, the gaps, and a résumé rewritten for that role using only what's on it, streamed in as it writes.",
+      "Paste a résumé and a job description. Tailor returns a fit score, the gaps, and a résumé rewritten for that role using only what's on it, streamed in as it writes.",
+    steps: ["Résumé and job description", "Fit score and verdict", "Gaps called out", "Rewrite streams in"],
     tech: ["Next.js", "Claude", "SQLite", "Razorpay"],
     image: "/assets/img/tailor-800.webp",
-    imageAlt: "Tailor: Your résumé, matched to the job, with résumé and job-description boxes beside a results panel",
+    imageAlt: "Tailor: résumé and job-description boxes beside a results panel",
   },
   {
     title: "Page Destroyer",
     href: "/page-destroyer/",
     category: "Chrome extension",
     dates: "Oct 2026",
+    stat: { value: "0", label: "bytes collected. Nothing leaves your browser" },
     description:
-      "Stuck on a slow portal or a ticket that won't move? Click the icon and smash the page with a hammer, a gun, a chainsaw or fire. Nothing is saved and nothing leaves your browser.",
+      "Stuck on a slow portal or a ticket that won't move? Click the icon and smash the page. Repair it with one key when you're done.",
+    steps: ["Hammer", "Gun", "Chainsaw", "Fire"],
     tech: ["Chrome extension", "Canvas", "Web Audio"],
     image: "/assets/img/page-destroyer-800.webp",
-    imageAlt: "A web page after a Page Destroyer session: glass cracks, a chainsaw cut, bullet holes and a scorch mark, with the weapon toolbar at the bottom",
+    imageAlt: "A web page after a Page Destroyer session: glass cracks, a chainsaw cut, bullet holes and a scorch mark",
     extension: true,
   },
 ];
 
 export const NAV = [
-  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ] as const;

@@ -2,29 +2,19 @@
 
 import { NAV, PROFILE } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import { Briefcase, House, Layers, LayoutGrid, Mail, Moon, Sun } from "lucide-react";
+import { ChevronDown, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const DOCK_ICONS = { home: House, experience: Briefcase, skills: Layers, projects: LayoutGrid, contact: Mail };
-
-// Highlights the section currently in the middle band of the screen.
-function useActiveSection() {
-  const [active, setActive] = useState<string>("home");
+function useScrolled() {
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    for (const { id } of NAV) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  return active;
+  return scrolled;
 }
 
 function ThemeToggle() {
@@ -35,7 +25,7 @@ function ThemeToggle() {
       type="button"
       aria-label="Toggle light and dark theme"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-      className="grid size-10 place-items-center rounded-full text-foreground transition-colors hover:bg-muted"
+      className="grid size-9 place-items-center rounded-full text-ink transition-colors hover:bg-ink/10"
     >
       <Moon className="size-[18px] dark:hidden" aria-hidden />
       <Sun className="hidden size-[18px] dark:block" aria-hidden />
@@ -44,56 +34,69 @@ function ThemeToggle() {
 }
 
 export function SiteHeader() {
-  const active = useActiveSection();
+  const scrolled = useScrolled();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <>
-      <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
-        <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5 sm:px-8">
-          <a href="#home" className="font-display text-lg font-semibold tracking-[-0.025em]">
-            {PROFILE.name}
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
+        scrolled || open ? "border-line bg-canvas/80 backdrop-blur-xl" : "border-transparent"
+      )}
+    >
+      <nav aria-label="Main" className="mx-auto flex h-12 max-w-content items-center justify-between gap-3 px-5 sm:px-8">
+        <a href="#top" className="truncate text-[17px] font-semibold tracking-[-0.02em] text-ink">
+          {PROFILE.name}
+        </a>
+        <div className="hidden items-center gap-6 md:flex">
+          {NAV.map(({ id, label }) => (
+            <a key={id} href={`#${id}`} className="text-[13px] text-mute transition-colors hover:text-ink">
+              {label}
+            </a>
+          ))}
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="hidden whitespace-nowrap rounded-full bg-accent px-4 py-1.5 text-[13px] font-medium text-on-accent transition-opacity hover:opacity-90 sm:inline-block"
+          >
+            Get in touch
           </a>
-          <nav aria-label="Sections" className="hidden items-center gap-1 md:flex">
-            {NAV.map(({ id, label }) => (
+          <button
+            type="button"
+            aria-label="Sections"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((o) => !o)}
+            className="grid size-9 place-items-center rounded-full text-ink hover:bg-ink/10 md:hidden"
+          >
+            <ChevronDown className={cn("size-[18px] transition-transform", open && "rotate-180")} aria-hidden />
+          </button>
+        </div>
+      </nav>
+      {open && (
+        <ul id="mobile-menu" className="mx-auto max-w-content px-5 pb-4 md:hidden">
+          {NAV.map(({ id, label }) => (
+            <li key={id}>
               <a
-                key={id}
                 href={`#${id}`}
-                aria-current={active === id ? "true" : undefined}
-                className={cn(
-                  "rounded-full px-4 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground",
-                  active === id && "bg-muted text-foreground"
-                )}
+                onClick={() => setOpen(false)}
+                className="block border-b border-line py-3 text-2xl font-semibold tracking-[-0.02em] text-ink"
               >
                 {label}
               </a>
-            ))}
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
-
-      {/* Phones get a thumb-reach dock instead of the top links. */}
-      <nav
-        aria-label="Sections"
-        className="fixed inset-x-0 bottom-4 z-40 mx-auto flex w-fit items-center gap-1 rounded-2xl border bg-surface/90 p-1.5 shadow-strong backdrop-blur-md md:hidden"
-      >
-        {NAV.map(({ id, label }) => {
-          const Icon = DOCK_ICONS[id];
-          return (
-            <a
-              key={id}
-              href={`#${id}`}
-              aria-label={label}
-              aria-current={active === id ? "true" : undefined}
-              className={cn(
-                "grid size-11 place-items-center rounded-xl text-muted-foreground transition-colors",
-                active === id && "bg-foreground text-background"
-              )}
-            >
-              <Icon className="size-[19px]" aria-hidden />
-            </a>
-          );
-        })}
-      </nav>
-    </>
+            </li>
+          ))}
+        </ul>
+      )}
+    </header>
   );
 }

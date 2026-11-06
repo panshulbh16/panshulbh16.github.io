@@ -4,7 +4,7 @@ My personal site: https://panshulbh16.github.io
 
 ## Editing
 
-Everything on the page lives in [`src/data/resume.tsx`](src/data/resume.tsx): profile, experience, skills and projects. To show a photo, add a square image at `public/me.jpg` and set `avatarUrl: "/me.jpg"` in `PROFILE`.
+Everything on the page lives in [`src/data/resume.tsx`](src/data/resume.tsx): profile, hero terminal, about, projects, experience and skills. Every fact there must be true; no invented numbers. To show a photo, add a square image at `public/me.jpg` and set `avatarUrl: "/me.jpg"` in `PROFILE`.
 
 `public/` is copied to the site as-is, which is how `/page-destroyer/` and its privacy policy keep their own static pages.
 

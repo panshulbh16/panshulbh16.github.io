@@ -17,7 +17,7 @@ export function SmashButton() {
     <button
       type="button"
       onClick={smashThisPage}
-      className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg bg-foreground px-3 py-1.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+      className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-transform hover:-translate-y-0.5"
     >
       <Hammer className="size-3.5" aria-hidden />
       Smash this page

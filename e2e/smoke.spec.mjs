@@ -7,17 +7,20 @@ test.describe('smoke @smoke', () => {
   test('profile shows who I am, where I work and what I built', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('Panshul Bharadwaj');
-    for (const heading of ['Experience', 'Skills', 'Projects', "Let's build something"]) {
+    for (const heading of ['Selected work', 'Experience', 'Skills and tools', 'Get in touch']) {
       await expect(page.getByRole('heading', { name: heading })).toBeVisible();
     }
     await expect(page.locator('#experience')).toContainText('Deloitte USI');
     await expect(page.locator('#experience')).toContainText('SoftClouds');
-    await expect(page.locator('#experience')).toContainText('MS Ramaiah University of Applied Sciences');
-    await expect(page.locator('#projects h3')).toHaveText(PROJECTS);
+    await expect(page.locator('#skills')).toContainText('MS Ramaiah University of Applied Sciences');
+    await expect(page.locator('#work h3')).toHaveText(PROJECTS);
+    await expect(page.locator('#contact')).toContainText('bharadwajpanshul@gmail.com');
 
-    // Skills filter narrows the grid.
-    await page.getByRole('button', { name: 'Oracle', exact: true }).click();
-    await expect(page.locator('#skills li')).toHaveCount(4);
+    // Nothing on the page reads as job hunting: Deloitte colleagues can see it.
+    await expect(page.locator('body')).not.toContainText(/open to work|a role you think/i);
+
+    // Every skill group is listed, Oracle first.
+    await expect(page.locator('#skills h3').first()).toHaveText('Oracle Cloud');
   });
 
   test('Page Destroyer has a working install link, its own page and a privacy policy', async ({ page, request }) => {
@@ -51,7 +54,7 @@ test.describe('smoke @smoke', () => {
   test('fits a phone screen without sideways scrolling', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/');
-    await expect(page.locator('#projects h3').first()).toBeVisible();
+    await expect(page.locator('#work h3').first()).toBeAttached();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
   });
