@@ -29,7 +29,7 @@ export const PROFILE = {
   initials: "PB",
   handle: "panshul",
   url: "https://panshulbh16.github.io",
-  // Drop a square photo at public/me.jpg and set this to "/me.jpg". Until then the monogram shows.
+  // Drop a square photo at public/me.jpg and set this to "/me.jpg". Until then About is text only.
   avatarUrl: "",
   role: "Technology Consultant & Product Engineer",
   description:

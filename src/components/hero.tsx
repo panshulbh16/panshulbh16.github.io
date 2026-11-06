@@ -1,10 +1,10 @@
 "use client";
 
-import { HERO_BADGE, PROFILE, TERMINAL } from "@/data/resume";
+import { Terminal } from "@/components/terminal";
+import { HERO_BADGE, PROFILE } from "@/data/resume";
 import { ArrowDown, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
-const COMMAND = `describe engineer ${PROFILE.handle}`;
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
 const ease = (t: number) => 1 - Math.pow(1 - t, 3);
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
@@ -14,6 +14,8 @@ const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 function useHeroProgress() {
   const ref = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState<number | null>(null);
+  // Sticky: true once the visitor has scrolled into the hero, so the terminal stops its intro for good.
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -21,7 +23,9 @@ function useHeroProgress() {
     const update = () => {
       frame = 0;
       const r = el.getBoundingClientRect();
-      setProgress(clamp(-r.top / Math.max(1, r.height - window.innerHeight)));
+      const p = clamp(-r.top / Math.max(1, r.height - window.innerHeight));
+      setProgress(p);
+      if (p > 0.04) setScrolled(true);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -35,63 +39,11 @@ function useHeroProgress() {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
-  return { ref, progress };
-}
-
-function Terminal({ progress }: { progress: number | null }) {
-  const animated = progress !== null;
-  const p = progress ?? 1;
-  const typed = animated ? Math.round(clamp((p - 0.18) / 0.12) * COMMAND.length) : COMMAND.length;
-  const lines = animated ? Math.floor(clamp((p - 0.32) / 0.42) * (TERMINAL.length + 0.999)) : TERMINAL.length;
-  const done = lines >= TERMINAL.length;
-
-  return (
-    <div
-      role="img"
-      aria-label={`Terminal: ${TERMINAL.map(([k, v]) => `${k}: ${v}`).join(". ")}`}
-      className="mx-auto flex h-[min(72svh,560px)] w-full max-w-content flex-col overflow-hidden rounded-[22px] border border-line bg-panel shadow-[0_40px_120px_-30px_rgb(0_0_0/0.6)]"
-    >
-      <div aria-hidden className="relative flex h-11 shrink-0 items-center border-b border-line bg-panel-2/60 px-4">
-        <span className="flex gap-2">
-          <span className="size-3 rounded-full bg-[#ff5f57]" />
-          <span className="size-3 rounded-full bg-[#febc2e]" />
-          <span className="size-3 rounded-full bg-[#28c840]" />
-        </span>
-        <span className="absolute inset-x-0 text-center font-mono text-[12px] text-faint">
-          {PROFILE.handle}@bengaluru: ~ — zsh
-        </span>
-      </div>
-      <div aria-hidden className="flex-1 overflow-hidden p-5 font-mono text-[13px] leading-[2] sm:p-7 sm:text-[17px]">
-        <p className="text-ink">
-          <span className="text-accent">➜</span> <span className="text-[rgb(var(--g2))]">~</span>{" "}
-          {COMMAND.slice(0, typed)}
-          {typed < COMMAND.length && <span className="caret ml-px inline-block h-[1.1em] w-[0.55em] translate-y-[3px] bg-ink" />}
-        </p>
-        <dl className="mt-2">
-          {TERMINAL.slice(0, lines).map(([k, v, accent]) => (
-            <div key={k} className="grid grid-cols-[7.5rem_1fr] gap-x-3 sm:grid-cols-[10rem_1fr]">
-              <dt className="text-faint">{k}</dt>
-              <dd className={accent ? "text-accent" : "text-ink"}>
-                {accent && <span className="pulse-dot mr-2 inline-block size-2 -translate-y-px rounded-full bg-accent" />}
-                {v}
-              </dd>
-            </div>
-          ))}
-        </dl>
-        {done && (
-          <p className="mt-3 text-ink">
-            <span className="text-accent">➜</span> <span className="text-[rgb(var(--g2))]">~</span>{" "}
-            <span className="caret inline-block h-[1.1em] w-[0.55em] translate-y-[3px] bg-ink" />
-          </p>
-        )}
-        {animated && !done && <p className="mt-3 text-faint">↓ scroll</p>}
-      </div>
-    </div>
-  );
+  return { ref, progress, scrolled };
 }
 
 export function Hero() {
-  const { ref, progress } = useHeroProgress();
+  const { ref, progress, scrolled } = useHeroProgress();
   const animated = progress !== null;
   // First 35% of the scroll: text fades back while the terminal slides up and grows.
   const t = animated ? ease(clamp(progress / 0.35)) : 0;
@@ -147,11 +99,18 @@ export function Hero() {
           </div>
         </div>
 
+        {/* The wrapper spans the screen, so only the terminal itself takes clicks. */}
         <div
-          className={animated ? "absolute inset-x-0 top-0 flex h-svh items-center px-4 pt-12 sm:px-8" : "relative mt-16 px-4 sm:px-8"}
+          className={
+            animated
+              ? "pointer-events-none absolute inset-x-0 top-0 flex h-svh items-center px-4 pt-12 sm:px-8"
+              : "relative mt-16 px-4 sm:px-8"
+          }
           style={animated ? { transform: `translateY(${(1 - t) * 66}svh) scale(${0.92 + t * 0.08})` } : undefined}
         >
-          <Terminal progress={progress} />
+          <div className="pointer-events-auto w-full">
+            <Terminal finish={scrolled} />
+          </div>
         </div>
       </div>
     </section>
