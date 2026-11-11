@@ -68,7 +68,7 @@ function About() {
               className="aspect-square w-full object-cover object-[50%_30%]"
             />
             <figcaption className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-md">
-              <MapPin className="size-3 text-[#30d158]" aria-hidden />
+              <MapPin className="size-3 text-accent" aria-hidden />
               {PROFILE.location}
             </figcaption>
           </figure>
@@ -231,7 +231,7 @@ function ExperienceSection() {
     <Section id="experience" title="Experience">
       <p className="reveal mt-4 text-lg">Building on Oracle Cloud since 2021.</p>
       <ol className="relative mt-14 space-y-8">
-        {/* Timeline rail: green into blue, like the headline gradient. */}
+        {/* Timeline rail: light into deep blue, like the headline gradient. */}
         <span
           aria-hidden
           className="absolute top-3 bottom-3 left-[7px] w-px bg-gradient-to-b from-[rgb(var(--g1))] via-[rgb(var(--g3))] to-transparent"
