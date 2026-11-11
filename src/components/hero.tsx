@@ -51,8 +51,6 @@ export function Hero() {
   return (
     <section ref={ref} id="top" className={animated ? "relative h-[230svh]" : "relative"}>
       <div className={animated ? "sticky top-0 h-svh overflow-hidden" : "relative overflow-hidden pb-16"}>
-        <div aria-hidden className="aurora pointer-events-none absolute inset-x-0 top-[10%] h-[80%]" />
-        <div aria-hidden className="dot-grid pointer-events-none absolute inset-0" />
 
         <div
           className="relative mx-auto flex max-w-3xl flex-col items-center px-5 pt-24 text-center sm:pt-28"
@@ -75,7 +73,7 @@ export function Hero() {
           >
             {PROFILE.name}
           </h1>
-          <p className="rise text-gradient mt-4 text-xl font-semibold tracking-[-0.02em] sm:text-[28px]" style={delay(160)}>
+          <p className="rise text-ink mt-4 text-xl font-semibold tracking-[-0.02em] sm:text-[28px]" style={delay(160)}>
             {PROFILE.role}
           </p>
           <p className="rise mt-6 max-w-2xl text-[17px] leading-[1.75] text-pretty sm:text-xl" style={delay(240)}>

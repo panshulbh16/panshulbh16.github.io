@@ -2,7 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Black canvas, graphite panels, one blue gradient. Light mode is white with deeper accents.
+/* Charcoal canvas, graphite panels, blue accents. Light mode is white with deeper accents.
    Colours are RGB triples so Tailwind can apply opacity (bg-ink/10 and so on). */
 :root {
   color-scheme: light;
@@ -18,13 +18,11 @@
   --g1: 29 78 216;
   --g2: 0 113 164;
   --g3: 0 102 204;
-  --aurora: 0.3;
-  --dots: 0.12;
 }
 
 .dark {
   color-scheme: dark;
-  --canvas: 0 0 0;
+  --canvas: 18 18 20;
   --panel: 22 22 24;
   --panel-2: 38 38 41;
   --ink: 245 245 247;
@@ -36,8 +34,6 @@
   --g1: 96 165 250;
   --g2: 100 210 255;
   --g3: 10 132 255;
-  --aurora: 0.55;
-  --dots: 0.16;
 }
 
 @theme inline {
@@ -82,20 +78,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-/* Blue glow behind the hero, over a fading dot grid. */
-.aurora {
-  background:
-    radial-gradient(40% 45% at 18% 62%, rgb(var(--g1) / var(--aurora)), transparent 70%),
-    radial-gradient(45% 50% at 82% 58%, rgb(var(--g3) / var(--aurora)), transparent 70%);
-  filter: blur(40px);
-  opacity: 0.55;
-}
-.dot-grid {
-  background-image: radial-gradient(rgb(var(--ink) / var(--dots)) 1px, transparent 1.3px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black, transparent);
 }
 
 /* Infinite skill rows. The list is rendered twice, so -50% lands on an identical frame. */
