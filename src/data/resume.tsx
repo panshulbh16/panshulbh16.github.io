@@ -58,7 +58,7 @@ export const TERMINAL: [string, string, boolean?][] = [
 // ~/about, revealed word by word on scroll. The first paragraph stays fully lit.
 export const ABOUT = [
   "I'm a technology consultant in Deloitte's Oracle CX practice, where I design and build sales and service systems on Oracle Cloud Redwood for companies in the US and Canada.",
-  "Before Deloitte I spent three and a half years at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for global clients.",
+  "Before Deloitte I worked at SoftClouds, building Oracle Sales and Service Cloud implementations and custom Visual Builder extensions for global clients.",
   "After hours I take my own ideas from first sketch to production: three web products and a Chrome extension, each designed, built, deployed and run by me.",
 ];
 
@@ -100,12 +100,12 @@ export const EXPERIENCE: Experience[] = [
         ],
       },
     ],
-    tech: ["Oracle Fusion Cloud", "Redwood", "Sales Cloud", "Service Cloud", "VBCS", "System design"],
+    tech: ["Oracle Fusion Cloud", "Redwood", "Sales Cloud", "Service Cloud", "VBS", "System design"],
   },
   {
     org: "SoftClouds",
     href: "https://www.softclouds.com/",
-    dates: "Oct 2021 – May 2025",
+    dates: "Jun 2022 – Jul 2025",
     place: "India",
     roles: [
       {
@@ -116,13 +116,13 @@ export const EXPERIENCE: Experience[] = [
             rest: " for global clients.",
           },
           {
-            lead: "Developed custom application extensions and UIs on Visual Builder (VBCS)",
+            lead: "Developed custom application extensions and UIs on Visual Builder Studio (VBS)",
             rest: ", groundwork for the Redwood work that followed.",
           },
         ],
       },
     ],
-    tech: ["Oracle Sales Cloud", "Oracle Service Cloud", "VBCS", "JavaScript"],
+    tech: ["Oracle Sales Cloud", "Oracle Service Cloud", "VBS", "JavaScript"],
   },
 ];
 
@@ -167,7 +167,7 @@ export const SKILL_GROUPS: SkillGroup[] = [
       { name: "Oracle Fusion Cloud", oracle: true },
       { name: "Sales & Service Cloud", oracle: true },
       { name: "Redwood", oracle: true },
-      { name: "Visual Builder (VBCS)", oracle: true },
+      { name: "Visual Builder Studio (VBS)", oracle: true },
     ],
   },
   { title: "Languages", icon: "code", skills: [S.ts, S.js, S.py] },
