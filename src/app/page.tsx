@@ -333,7 +333,7 @@ function Contact() {
   return (
     <Section id="contact" title="Get in touch">
       <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed">
-        For consulting, a collaboration or just to talk about something I built, email is the fastest way to reach me.
+        Have a question about Roamly, Duely, or Tailor? Email me or connect with me on LinkedIn.
       </p>
       <a
         href={`mailto:${PROFILE.email}`}
