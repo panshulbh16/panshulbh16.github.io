@@ -78,7 +78,7 @@ export function Hero() {
           </p>
           <p className="rise mt-6 max-w-2xl text-[17px] leading-[1.75] text-pretty sm:text-xl" style={delay(240)}>
             I build sales and service systems on <b className="font-medium text-ink">Oracle Cloud</b> at{" "}
-            <b className="font-medium text-ink">Deloitte</b>, and after hours I ship my own products:{" "}
+            <b className="font-medium text-ink">Deloitte</b>, and after hours I ship my own projects:{" "}
             <b className="font-medium text-ink">Duely</b>, <b className="font-medium text-ink">Roamly</b> and{" "}
             <b className="font-medium text-ink">Tailor</b>, all live, with{" "}
             <b className="font-medium text-ink">Air Map</b> in the works.
