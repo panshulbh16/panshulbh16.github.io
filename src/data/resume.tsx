@@ -51,6 +51,7 @@ export const TERMINAL: [string, string, boolean?][] = [
   ["Building on", "Oracle Cloud since 2021"],
   ["After hours", "Next.js · Cloudflare Workers · Claude"],
   ["Shipped", "Duely · Roamly · Tailor · Page Destroyer"],
+  ["Building", "Air Map, a flight companion for Roamly"],
   ["Location", "Bengaluru, India"],
   ["Status", "Shipping", true],
 ];
@@ -184,7 +185,9 @@ export const MARQUEE: Skill[][] = [
 
 export type Project = {
   title: string;
-  href: string;
+  // Public URL. Omitted for work that is not public yet; `status` says why.
+  href?: string;
+  status?: string;
   source?: string;
   category: string;
   dates: string;
@@ -201,6 +204,19 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: "Air Map",
+    status: "In development · not public yet",
+    category: "Travel · flights",
+    dates: "Nov 2026 · prototype",
+    stat: { value: "16 days", label: "of turbulence forecast, flight by flight, before you fly" },
+    description:
+      "Roamly's flight companion: fetch your flights from Google Calendar, see every route on a globe, check turbulence for any flight before you fly, and turn a trip into a share card for Stories or your feed.",
+    steps: ["Import flights from Calendar", "See your routes on the globe", "Check turbulence before you fly", "Share a Story or Feed card"],
+    tech: ["Vite", "Canvas", "D3", "Google Calendar API", "Open-Meteo", "AeroDataBox"],
+    image: "/assets/img/airmap-800.webp",
+    imageAlt: "Air Map: a globe with flight routes beside travel stats and a next-takeoff card",
+  },
   {
     title: "Duely",
     href: "https://heyduely.com/",

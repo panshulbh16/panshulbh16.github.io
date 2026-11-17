@@ -56,7 +56,8 @@ const jsonLd = {
     owns: PROJECTS.map((p) => ({
       "@type": "SoftwareApplication",
       name: p.title,
-      url: new URL(p.href, PROFILE.url).toString(),
+      // Work that is not public yet points at its card on this page.
+      url: p.href ? new URL(p.href, PROFILE.url).toString() : `${PROFILE.url}/#work`,
       description: p.description,
     })),
   },

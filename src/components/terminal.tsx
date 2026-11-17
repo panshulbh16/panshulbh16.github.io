@@ -156,6 +156,10 @@ export function Terminal({ finish }: { finish: boolean }) {
     }
     const project = PROJECTS.find((p) => slug(p.title) === target);
     if (project) {
+      if (!project.href) {
+        goTo("work");
+        return <Dim>{project.title}: {project.status ?? "not public yet"} → ~/work</Dim>;
+      }
       const external = project.href.startsWith("http");
       openInNewTab(project.href);
       return <Dim>Opening {external ? new URL(project.href).hostname.replace(/^www\./, "") : project.title} ↗</Dim>;
@@ -201,7 +205,7 @@ export function Terminal({ finish }: { finish: boolean }) {
           <Table
             rows={PROJECTS.map((p) => [
               slug(p.title),
-              `${p.category} · ${p.href.startsWith("http") ? new URL(p.href).hostname.replace(/^www\./, "") : "Chrome"}`,
+              `${p.category} · ${!p.href ? (p.status ?? "not public yet") : p.href.startsWith("http") ? new URL(p.href).hostname.replace(/^www\./, "") : "Chrome"}`,
             ])}
           />
         );
