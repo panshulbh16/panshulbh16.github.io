@@ -205,7 +205,7 @@ export function Terminal({ finish }: { finish: boolean }) {
           <Table
             rows={PROJECTS.map((p) => [
               slug(p.title),
-              `${p.category} · ${!p.href ? (p.status ?? "not public yet") : p.href.startsWith("http") ? new URL(p.href).hostname.replace(/^www\./, "") : "Chrome"}`,
+              `${p.category} · ${!p.href ? (p.status ?? "not public yet") : p.href.startsWith("http") ? new URL(p.href).hostname.replace(/^www\./, "") : p.extension ? "Chrome" : `${new URL(PROFILE.url).hostname}${p.href}`}`,
             ])}
           />
         );

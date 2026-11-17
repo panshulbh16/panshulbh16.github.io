@@ -18,3 +18,7 @@ npm test         # unit + Playwright tests (run `npm run build` first)
 ```
 
 Pushing to `main` builds, tests and deploys to GitHub Pages (`.github/workflows/ci-cd.yml`), then smoke-tests the live site.
+
+## Air Map
+
+`public/airmap/` is the built copy of Air Map, served at `/airmap/`. Its source lives in the private `airprint-prototype` repository. To update it, run `npm run build:portfolio` there and replace the contents of `public/airmap/` with that `dist/` folder, then push; the smoke test checks that the page loads and is linked from its card.

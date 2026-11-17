@@ -206,9 +206,9 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     title: "Air Map",
-    status: "In development · not public yet",
+    href: "/airmap/",
     category: "Travel · flights",
-    dates: "Nov 2026 · prototype",
+    dates: "Nov 2026 · live prototype",
     stat: { value: "16 days", label: "of turbulence forecast, flight by flight, before you fly" },
     description:
       "Roamly's flight companion: fetch your flights from Google Calendar, see every route on a globe, check turbulence for any flight before you fly, and turn a trip into a share card for Stories or your feed.",

@@ -85,9 +85,11 @@ function BrowserShot({ p }: { p: Project }) {
   const external = !!p.href && p.href.startsWith("http");
   const label = external
     ? new URL(p.href as string).hostname.replace(/^www\./, "")
-    : p.href
+    : p.extension
       ? "any page you're stuck on"
-      : "local prototype · not public yet";
+      : p.href
+        ? `${new URL(PROFILE.url).hostname}${p.href}`
+        : "local prototype · not public yet";
   const frameClass = "group/shot block overflow-hidden rounded-xl border border-line bg-canvas";
   const inner = (
     <>

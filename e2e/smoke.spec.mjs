@@ -42,6 +42,17 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
+  test('Air Map is served under the site and linked from its card', async ({ page }) => {
+    await page.goto('/');
+    const card = page.locator('#work article', { hasText: 'Air Map' }).first();
+    await expect(card.getByRole('link', { name: /Open Air Map/ })).toHaveAttribute('href', '/airmap/');
+    const res = await page.goto('/airmap/');
+    expect(res.ok()).toBe(true);
+    await expect(page).toHaveTitle(/Air Map/);
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Check Turbulence' })).toBeVisible();
+  });
+
   test('hero terminal types its intro, then takes commands', async ({ page }) => {
     await page.goto('/');
     const input = page.getByLabel('Terminal command. Type help to see what it can do.');
