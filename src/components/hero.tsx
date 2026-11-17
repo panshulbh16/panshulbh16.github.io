@@ -80,7 +80,8 @@ export function Hero() {
             I build sales and service systems on <b className="font-medium text-ink">Oracle Cloud</b> at{" "}
             <b className="font-medium text-ink">Deloitte</b>, and after hours I ship my own products:{" "}
             <b className="font-medium text-ink">Duely</b>, <b className="font-medium text-ink">Roamly</b> and{" "}
-            <b className="font-medium text-ink">Tailor</b>, all live.
+            <b className="font-medium text-ink">Tailor</b>, all live, with{" "}
+            <b className="font-medium text-ink">Air Map</b> in the works.
           </p>
           <div className="rise mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={delay(320)}>
             <a

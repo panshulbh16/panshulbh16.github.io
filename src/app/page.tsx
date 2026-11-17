@@ -82,16 +82,20 @@ function About() {
 }
 
 function BrowserShot({ p }: { p: Project }) {
-  const external = p.href.startsWith("http");
-  return (
-    <ExtLink href={p.href} className="group/shot block overflow-hidden rounded-xl border border-line bg-canvas">
+  const external = !!p.href && p.href.startsWith("http");
+  const label = external
+    ? new URL(p.href as string).hostname.replace(/^www\./, "")
+    : p.href
+      ? "any page you're stuck on"
+      : "local prototype · not public yet";
+  const frameClass = "group/shot block overflow-hidden rounded-xl border border-line bg-canvas";
+  const inner = (
+    <>
       <span aria-hidden className="flex items-center gap-1.5 border-b border-line px-3 py-2">
         <span className="size-2 rounded-full bg-[#ff5f57]" />
         <span className="size-2 rounded-full bg-[#febc2e]" />
         <span className="size-2 rounded-full bg-[#28c840]" />
-        <span className="ml-2 truncate font-mono text-[11px] text-faint">
-          {external ? new URL(p.href).hostname.replace(/^www\./, "") : "any page you're stuck on"}
-        </span>
+        <span className="ml-2 truncate font-mono text-[11px] text-faint">{label}</span>
       </span>
       <span className="block aspect-[16/10] overflow-hidden">
         <img
@@ -104,7 +108,14 @@ function BrowserShot({ p }: { p: Project }) {
           className="size-full object-cover object-top transition-transform duration-700 group-hover/shot:scale-[1.03]"
         />
       </span>
+    </>
+  );
+  return p.href ? (
+    <ExtLink href={p.href} className={frameClass}>
+      {inner}
     </ExtLink>
+  ) : (
+    <span className={frameClass}>{inner}</span>
   );
 }
 
@@ -156,7 +167,7 @@ function WorkCard({ p }: { p: Project }) {
               </a>
               <SmashButton />
             </>
-          ) : (
+          ) : p.href ? (
             <ExtLink
               href={p.href}
               className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-medium text-on-accent transition-opacity hover:opacity-90"
@@ -164,6 +175,11 @@ function WorkCard({ p }: { p: Project }) {
               Open {p.title}
               <ArrowUpRight className="size-4" aria-hidden />
             </ExtLink>
+          ) : (
+            <span className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-medium text-ink">
+              <span className="pulse-dot size-2 rounded-full bg-accent" aria-hidden />
+              {p.status}
+            </span>
           )}
         </div>
       </footer>
@@ -333,7 +349,7 @@ function Contact() {
   return (
     <Section id="contact" title="Get in touch">
       <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed">
-        Have a question about Roamly, Duely, or Tailor? Email me or connect with me on LinkedIn.
+        Have a question about Roamly, Air Map, Duely, or Tailor? Email me or connect with me on LinkedIn.
       </p>
       <a
         href={`mailto:${PROFILE.email}`}

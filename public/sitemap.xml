@@ -3,7 +3,8 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://panshulbh16.github.io/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-11-17</lastmod>
+    <image:image><image:loc>https://panshulbh16.github.io/assets/img/airmap.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/duely.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/roamly.png</image:loc></image:image>
     <image:image><image:loc>https://panshulbh16.github.io/assets/img/tailor.png</image:loc></image:image>
