@@ -206,7 +206,7 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     title: "HeyTurbulence",
-    href: "/airmap/",
+    href: "/heyturbulence/",
     category: "Travel · flights",
     dates: "Nov 2026 · live prototype",
     stat: { value: "16 days", label: "of turbulence forecast, flight by flight, before you fly" },
@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
       "Roamly's turbulence checker: see how bumpy any flight may be, up to 16 days ahead. Import your flights from Google Calendar, see every route on a globe, and turn a trip into a share card for Stories or your feed.",
     steps: ["Check turbulence before you fly", "Import flights from Calendar", "See your routes on the globe", "Share a Story or Feed card"],
     tech: ["Vite", "Canvas", "D3", "Google Calendar API", "Open-Meteo", "AeroDataBox"],
-    image: "/assets/img/airmap-800.webp",
+    image: "/assets/img/heyturbulence-800.webp",
     imageAlt: "HeyTurbulence: a globe with flight routes beside travel stats and a next-takeoff card",
   },
   {

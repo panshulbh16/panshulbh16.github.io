@@ -45,12 +45,16 @@ test.describe('smoke @smoke', () => {
   test('HeyTurbulence is served under the site and linked from its card', async ({ page }) => {
     await page.goto('/');
     const card = page.locator('#work article', { hasText: 'HeyTurbulence' }).first();
-    await expect(card.getByRole('link', { name: /Open HeyTurbulence/ })).toHaveAttribute('href', '/airmap/');
-    const res = await page.goto('/airmap/');
+    await expect(card.getByRole('link', { name: /Open HeyTurbulence/ })).toHaveAttribute('href', '/heyturbulence/');
+    const res = await page.goto('/heyturbulence/');
     expect(res.ok()).toBe(true);
     await expect(page).toHaveTitle(/HeyTurbulence/);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Check Turbulence' })).toBeVisible();
+    // The app's earlier address still opens it, keeping the section it pointed at.
+    await page.goto('/airmap/#turbulence');
+    await expect(page).toHaveURL(/\/heyturbulence\/#turbulence$/);
+    await expect(page).toHaveTitle(/HeyTurbulence/);
   });
 
   test('hero terminal types its intro, then takes commands', async ({ page }) => {

@@ -19,6 +19,8 @@ npm test         # unit + Playwright tests (run `npm run build` first)
 
 Pushing to `main` builds, tests and deploys to GitHub Pages (`.github/workflows/ci-cd.yml`), then smoke-tests the live site.
 
-## HeyTurbulence (formerly Air Map)
+## HeyTurbulence
 
-`public/airmap/` is the built copy of HeyTurbulence, served at `/airmap/`. Its source lives in the private `airprint-prototype` repository. To update it, run `npm run build:portfolio` there and replace the contents of `public/airmap/` with that `dist/` folder, then push; the smoke test checks that the page loads and is linked from its card.
+`public/heyturbulence/` is the built copy of HeyTurbulence (by Roamly), served at `/heyturbulence/`. Its source lives in the private `airprint-prototype` repository. To update it, run `npm run build:portfolio` there (it needs that repository's `.env.local` settings and stops without them) and replace the contents of `public/heyturbulence/` with that `dist/` folder, then push; the smoke test checks that the page loads and is linked from its card.
+
+`public/airmap/index.html` is only a redirect: the app lived at `/airmap/` until 18 November 2026, and links shared before then should keep opening it.
