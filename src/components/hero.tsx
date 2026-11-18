@@ -81,7 +81,7 @@ export function Hero() {
             <b className="font-medium text-ink">Deloitte</b>, and after hours I ship my own projects:{" "}
             <b className="font-medium text-ink">Duely</b>, <b className="font-medium text-ink">Roamly</b> and{" "}
             <b className="font-medium text-ink">Tailor</b>, all live, and{" "}
-            <b className="font-medium text-ink">Air Map</b>, live as a prototype.
+            <b className="font-medium text-ink">HeyTurbulence</b>, live as a prototype.
           </p>
           <div className="rise mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-4" style={delay(320)}>
             <a

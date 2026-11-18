@@ -1,7 +1,7 @@
 // Smoke tests. Tagged @smoke so the CD job can run them against the live site after a deploy.
 import { test, expect } from './fixtures.mjs';
 
-const PROJECTS = ['Air Map', 'Duely', 'Roamly', 'Tailor', 'Page Destroyer'];
+const PROJECTS = ['HeyTurbulence', 'Duely', 'Roamly', 'Tailor', 'Page Destroyer'];
 
 test.describe('smoke @smoke', () => {
   test('profile shows who I am, where I work and what I built', async ({ page }) => {
@@ -42,13 +42,13 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
-  test('Air Map is served under the site and linked from its card', async ({ page }) => {
+  test('HeyTurbulence is served under the site and linked from its card', async ({ page }) => {
     await page.goto('/');
-    const card = page.locator('#work article', { hasText: 'Air Map' }).first();
-    await expect(card.getByRole('link', { name: /Open Air Map/ })).toHaveAttribute('href', '/airmap/');
+    const card = page.locator('#work article', { hasText: 'HeyTurbulence' }).first();
+    await expect(card.getByRole('link', { name: /Open HeyTurbulence/ })).toHaveAttribute('href', '/airmap/');
     const res = await page.goto('/airmap/');
     expect(res.ok()).toBe(true);
-    await expect(page).toHaveTitle(/Air Map/);
+    await expect(page).toHaveTitle(/HeyTurbulence/);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Check Turbulence' })).toBeVisible();
   });

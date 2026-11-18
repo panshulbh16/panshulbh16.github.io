@@ -351,7 +351,7 @@ function Contact() {
   return (
     <Section id="contact" title="Get in touch">
       <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed">
-        Have a question about Roamly, Air Map, Duely, or Tailor? Email me or connect with me on LinkedIn.
+        Have a question about Roamly, HeyTurbulence, Duely, or Tailor? Email me or connect with me on LinkedIn.
       </p>
       <a
         href={`mailto:${PROFILE.email}`}
