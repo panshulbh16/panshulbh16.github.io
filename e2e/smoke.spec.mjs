@@ -42,28 +42,11 @@ test.describe('smoke @smoke', () => {
     await expect(page.locator('h1')).toContainText('Privacy');
   });
 
-  test('HeyTurbulence links to heyturbulence.com, and its old addresses send visitors there', async ({ page }) => {
-    // Stop at heyturbulence.com: this checks the redirects, not that site.
-    await page.route('https://heyturbulence.com/**', (route) => route.fulfill({ body: '<title>HeyTurbulence</title>', contentType: 'text/html' }));
+  test('HeyTurbulence links to heyturbulence.com, and its old copy here is gone', async ({ page, request }) => {
     await page.goto('/');
     const card = page.locator('#work article', { hasText: 'HeyTurbulence' }).first();
     await expect(card.getByRole('link', { name: /Open HeyTurbulence/ })).toHaveAttribute('href', 'https://heyturbulence.com/');
-    for (const old of ['/heyturbulence/#turbulence', '/airmap/#turbulence']) {
-      await page.goto(old);
-      await expect(page).toHaveURL('https://heyturbulence.com/#turbulence');
-    }
-  });
-
-  test('the old HeyTurbulence address lets someone with saved flights download them first', async ({ page }) => {
-    await page.goto('/');
-    await page.evaluate(() => localStorage.setItem('airprint.flights.v1', '[{"id":"x"}]'));
-    await page.goto('/heyturbulence/');
-    await expect(page).toHaveURL(/\/heyturbulence\/$/);
-    const download = page.waitForEvent('download');
-    await page.getByRole('button', { name: 'Download my flights' }).click();
-    expect((await download).suggestedFilename()).toBe('heyturbulence-flights-backup.json');
-    await expect(page.getByRole('link', { name: 'Open heyturbulence.com' })).toHaveAttribute('href', 'https://heyturbulence.com/');
-    await page.evaluate(() => localStorage.removeItem('airprint.flights.v1'));
+    for (const old of ['/heyturbulence/', '/airmap/']) expect((await request.get(old)).status(), old).toBe(404);
   });
 
   test('hero terminal types its intro, then takes commands', async ({ page }) => {

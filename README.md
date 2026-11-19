@@ -23,4 +23,4 @@ Pushing to `main` builds, tests and deploys to GitHub Pages (`.github/workflows/
 
 HeyTurbulence (by Roamly) lives at https://heyturbulence.com, published from the `heyturbulence-site` repository; its source is in the private `roamly-heyturbulence` repository.
 
-`public/heyturbulence/index.html` and `public/airmap/index.html` are only redirects to heyturbulence.com, keeping any `?query` or `#section`, so links shared before the move keep working. The app moved off `/airmap/` on 18 November 2026 and off `/heyturbulence/` on 19 November 2026. Flights saved in the browser stay with the address they were saved on, so the `/heyturbulence/` page offers a download of any saved flights before sending the visitor on; Data & privacy → Restore on heyturbulence.com brings them back.
+The old copies at `/airmap/` (until 18 November 2026) and `/heyturbulence/` (until 19 November 2026) were removed on 19 November 2026; those addresses now return 404.
