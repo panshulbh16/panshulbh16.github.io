@@ -2,22 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Scripts only from this site and Google sign-in, so a missed escape cannot run injected code. The schedule worker origin comes from the build setting VITE_SCHEDULE_PROXY. -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style; frame-src https://accounts.google.com/gsi/; connect-src 'self' https://accounts.google.com/gsi/ https://www.googleapis.com https://openidconnect.googleapis.com https://oauth2.googleapis.com https://api.open-meteo.com https://airmap-schedules.panshulbh16.workers.dev; img-src 'self' data: blob:; font-src 'self'; object-src 'none'; base-uri 'none'"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f5ef" />
-    <meta
-      name="description"
-      content="Check how bumpy your flight may be, up to 16 days ahead. Keep your flights and share them with HeyTurbulence by Roamly."
-    />
-    <title>HeyTurbulence by Roamly — Check turbulence before you fly</title>
-    <script type="module" crossorigin src="/heyturbulence/assets/index-Mq7Va9lY.js"></script>
-    <link rel="stylesheet" crossorigin href="/heyturbulence/assets/index-D0ts3-wK.css">
+    <meta name="robots" content="noindex" />
+    <title>HeyTurbulence has moved</title>
+    <link rel="canonical" href="https://heyturbulence.com/" />
+    <style>
+      body { font: 16px/1.5 system-ui, sans-serif; max-width: 34rem; margin: 3rem auto; padding: 0 16px; }
+      button, a.button { font: inherit; padding: .6rem 1rem; border-radius: .5rem; border: 1px solid; cursor: pointer; text-decoration: none; display: inline-block; margin: .25rem .5rem .25rem 0; }
+    </style>
+    <!-- HeyTurbulence now lives at heyturbulence.com. Flights saved here stay in this
+         address's browser storage, so anyone who has some gets to download them first. -->
+    <script>
+      var target = "https://heyturbulence.com/" + location.search + location.hash;
+      var saved = null;
+      try {
+        saved = localStorage.getItem("airprint.flights.v1");
+        if (saved === "[]") saved = null;
+      } catch (e) {}
+      if (!saved) location.replace(target);
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=https://heyturbulence.com/" /></noscript>
   </head>
   <body>
-    <div id="app"></div>
+    <h1>HeyTurbulence has moved to heyturbulence.com</h1>
+    <p id="saved" hidden>
+      Your flights are saved at this old address. Download them, then open
+      heyturbulence.com and choose <b>Data &amp; privacy → Restore</b> to bring them over.
+      <br />
+      <button id="download" type="button">Download my flights</button>
+    </p>
+    <p><a class="button" id="open" href="https://heyturbulence.com/">Open heyturbulence.com</a></p>
+    <script>
+      document.getElementById("open").href = target;
+      if (saved) {
+        document.getElementById("saved").hidden = false;
+        document.getElementById("download").onclick = function () {
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(new Blob([saved], { type: "application/json" }));
+          a.download = "heyturbulence-flights-backup.json";
+          a.click();
+        };
+      }
+    </script>
   </body>
 </html>

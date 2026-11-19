@@ -206,7 +206,7 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     title: "HeyTurbulence",
-    href: "/heyturbulence/",
+    href: "https://heyturbulence.com/",
     category: "Travel · flights",
     dates: "Nov 2026 · live prototype",
     stat: { value: "16 days", label: "of turbulence forecast, flight by flight, before you fly" },
