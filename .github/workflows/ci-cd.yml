@@ -36,7 +36,7 @@ jobs:
         run: npm run build
 
       - name: Install Chromium for Playwright
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium || npx playwright install chromium  # the runner image already has the system libraries if apt mirrors are down
 
       - name: End-to-end tests (portfolio)
         run: npm run test:e2e
@@ -102,7 +102,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install --with-deps chromium || npx playwright install chromium  # the runner image already has the system libraries if apt mirrors are down
 
       - name: Smoke tests against https://panshulbh16.github.io
         env:
