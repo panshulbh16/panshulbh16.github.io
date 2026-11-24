@@ -52,7 +52,8 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # A push to main, or Run workflow on main (to publish again without a commit, e.g. after Pages was switched back on).
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
