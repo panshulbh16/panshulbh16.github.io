@@ -49,22 +49,13 @@ jobs:
           path: playwright-report
           retention-days: 14
 
-  deploy:
-    name: Deploy to GitHub Pages
+  pages-build:
+    name: Build the site for GitHub Pages
     needs: test
     # A push to main, or Run workflow on main (to publish again without a commit, e.g. after Pages was switched back on).
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: pages
-      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 
@@ -84,6 +75,23 @@ jobs:
         with:
           path: out
 
+  # Its own job, as in GitHub's Pages workflows: deploy-pages looks the artifact up through the API, and in the job that
+  # uploaded it the listing can lag behind ("No artifacts named github-pages were found").
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: pages-build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
